@@ -118,18 +118,21 @@
         [
             'title' => 'Do Androids Dream of Electric Sheep',
             'author' => 'Philip K. Dick',
+            'publishYear' => '1968',
             'url' =>
                 'https://www.goodreads.com/book/show/36402034-do-androids-dream-of-electric-sheep'
         ],
         [
             'title' => 'Project Hail Mary',
             'author' => 'Andy Weir',
+            'publishYear' => '2021',
             'url' =>
                 'https://www.goodreads.com/book/show/54493401-project-hail-mary'
         ],
         [
             'title' => 'One Past Midnight: The Langoliers',
             'author' => 'Stephen King',
+            'publishYear' => '1990',
             'url' =>
                 'https://www.goodreads.com/book/show/102733.One_Past_Midnight'
         ]
@@ -140,7 +143,7 @@
       <!-- <li><?= $book['title'] ?></li> -->
       <li>
         <a href=<?= $book['url'] ?> target="_blank">
-        <?= $book['title'] ?></a> (<?= $book['author'] ?>)
+        <?= $book['title'] ?></a> (<?= $book['publishYear'] ?>)
       </li>
       <?php endforeach; ?>
     </ul>
