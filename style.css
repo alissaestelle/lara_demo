@@ -1,0 +1,35 @@
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+
+  font-family: 'Cormorant', serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+li {
+  font-size: 1.5em;
+}
+
+p {
+  font-size: 1.25em;
+}
+
+#ex-1 {
+  color: orange
+}
+
+#ex-2 {
+  color: orchid
+}
+
+.hide {
+  display: none;
+}
