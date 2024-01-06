@@ -76,7 +76,7 @@
 
   <div>
     <!-- Displaying Data w/ Arrays -->
-    <h2>Recommended Books</h2>
+    <h2 class="hide">Recommended Books</h2>
 
     <!-- No. 1 (w/o Array)-->
     <ul class="hide">
@@ -123,28 +123,113 @@
                 'https://www.goodreads.com/book/show/36402034-do-androids-dream-of-electric-sheep'
         ],
         [
-            'title' => 'Project Hail Mary',
-            'author' => 'Andy Weir',
-            'publishYear' => '2021',
-            'url' =>
-                'https://www.goodreads.com/book/show/54493401-project-hail-mary'
-        ],
-        [
             'title' => 'One Past Midnight: The Langoliers',
             'author' => 'Stephen King',
             'publishYear' => '1990',
             'url' =>
                 'https://www.goodreads.com/book/show/102733.One_Past_Midnight'
-        ]
-    ]; ?>
+        ],
+        [
+          'title' => 'The Martian',
+          'author' => 'Andy Weir',
+          'publishYear' => '2011',
+          'url' =>
+              'https://www.goodreads.com/book/show/18007564-the-martian'
+        ],
+        [
+          'title' => 'Project Hail Mary',
+          'author' => 'Andy Weir',
+          'publishYear' => '2021',
+          'url' =>
+              'https://www.goodreads.com/book/show/54493401-project-hail-mary'
+      ]
+    ];
 
+    // Functions && Logic
+    function filterAuthors($books, $author) {
+      $collection = [];
+
+      foreach ($books as $book) {
+        if ($book['author'] == $author) {
+          $collection[] = $book;
+        }
+      }
+
+      return $collection;
+    }
+
+    $andyWeir = filterAuthors($books, 'Andy Weir');
+
+    function filterDates($books) {
+      $collection = [];
+
+      foreach ($books as $book) {
+        $publishYear = intval($book['publishYear']);
+        if ($publishYear >= 1989) {
+          $collection[] = $book;
+        }
+      }
+
+      return $collection;
+    }
+
+    $post1989 = filterDates($books);
+
+    ?>
+
+    <h2>Recommended Books</h2>
     <ul>
       <?php foreach ($books as $book): ?>
-      <!-- <li><?= $book['title'] ?></li> -->
       <li>
         <a href=<?= $book['url'] ?> target="_blank">
-        <?= $book['title'] ?></a> (<?= $book['publishYear'] ?>)
+        <?= $book['title'] ?></a>
       </li>
+      <?php endforeach; ?>
+    </ul>
+
+    <h2 class="hide">Books by Andy Weir</h2>
+    <ul class="hide">
+      <?php foreach (filterAuthors($books, 'Andy Weir') as $book): ?>
+        <!-- <?php if ($book['author'] == 'Andy Weir'): ?> -->
+          <li>
+            <a href=<?= $book['url'] ?> target="_blank">
+            <?= $book['title'] ?></a>
+          </li>
+        <!-- <?php endif; ?> -->
+      <?php endforeach; ?>
+    </ul>
+
+    <h2 class="hide">Books Published After 1989</h2>
+    <ul class="hide">
+      <?php foreach (filterDates($books) as $book): ?>
+          <li>
+            <a href=<?= $book['url'] ?> target="_blank">
+            <?= $book['title'] ?></a> (<?= $book['publishYear'] ?>)
+          </li>
+      <?php endforeach; ?>
+    </ul>
+
+    <!-- Lambda Functions -->
+    <!-- Instead of calling functions directly inside forEach loops like those above, it's much more readable to assign their results to variables. -->
+    <!-- See L:161 && L:176 -->
+
+    <h2>Books by Andy Weir</h2>
+    <ul>
+      <?php foreach ($andyWeir as $a): ?>
+          <li>
+            <a href=<?= $a['url'] ?> target="_blank">
+            <?= $a['title'] ?></a>
+          </li>
+      <?php endforeach; ?>
+    </ul>
+
+    <h2>Books Published After 1989</h2>
+    <ul>
+      <?php foreach ($post1989 as $y): ?>
+          <li>
+            <a href=<?= $y['url'] ?> target="_blank">
+            <?= $y['title'] ?></a> (<?= $y['publishYear'] ?>)
+          </li>
       <?php endforeach; ?>
     </ul>
 
