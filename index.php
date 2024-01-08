@@ -1,1 +1,5 @@
-<?php include 'index.view.php' ?>
+<?php
+
+$page = 'Home';
+
+include 'views/index.view.php'; ?>

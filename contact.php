@@ -1,1 +1,5 @@
-<?php include 'contact.view.php' ?>
+<?php
+
+$page = 'Contact';
+
+include 'views/contact.view.php'; ?>

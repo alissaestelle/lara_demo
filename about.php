@@ -1,1 +1,5 @@
-<?php include 'about.view.php' ?>
+<?php
+
+$page = 'About';
+
+include 'views/about.view.php'; ?>
