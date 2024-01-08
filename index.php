@@ -30,13 +30,13 @@
   <h1 id="ex-2" class="hide">
     <!-- Concatenation Methods w/ Variables -->
 
-    <!-- No. 1 -->
+    <!-- No. 1 (Periods) -->
     <?php
     $hello = 'Hello';
     echo $hello . ',' . ' ' . 'World';
     ?>
 
-    <!-- No. 2 -->
+    <!-- No. 2 (Double Quotes) -->
     <?php
     $hello = 'Hello';
     echo "$hello, Universe";
@@ -79,7 +79,7 @@
           echo "<li>{$book['title']}</li>";
       } ?>
     </ul>
-    <!-- This loop renders each book to the browser just like it should, but what if each book required a trademark symbol? -->
+    <!-- This loop renders each book title to the browser just like it should, but what if each book required a trademark symbol? -->
 
     <!-- No. 3 -->
     <ul class="hide">
