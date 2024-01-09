@@ -1,24 +1,46 @@
 <?php
+include 'functions.php';
 
-$page = 'Home';
-
-echo nl2br("Test Text \n");
-// Note: The echo keyword only accepts string values.
-
-var_dump('Test Text');
-
-// Note: var_dump() accepts all datatypes.
-
-// Superglobals
-// ↳ PHP includes universal variables that can be used in any script/file (i.e. $_SERVER).
-
-// var_dump($_SERVER['REQUEST_URI']);
+$thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
 ?>
 
-<!-- <pre><?= var_dump($_SERVER) ?></pre> -->
-<?= $_SERVER['REQUEST_URI'] ?>
+<!-- <pre><?= formatArr($thisURI) ?></pre> -->
 
-<?php // "Include" === "Paste"
+<?php
+function switchViews($uri)
+{
+    switch ($uri) {
+        case '/':
+            include 'controllers/index.php';
+            break;
+        case '/about':
+            include 'controllers/about.php';
+            break;
+        case '/contact':
+            include 'controllers/contact.php';
+            break;
+        default:
+            echo 'Currently Lost in Space';
+    }
+}
 
-include 'functions.php';
-include 'views/index.view.php'; ?>
+// switchViews($thisURI);
+
+$routes = [
+    '/' => 'controllers/index.php',
+    '/about' => 'controllers/about.php',
+    '/contact' => 'controllers/contact.php'
+];
+
+$err404 = 'views/404.php';
+
+function eHandler() {
+  
+}
+
+foreach ($routes as $x => $y) {
+    $thisURI === $x ? include $y : include $err404;
+}
+
+
+?>
