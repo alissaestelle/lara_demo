@@ -14,8 +14,6 @@ $page = 'Home';
 // var_dump($_SERVER['REQUEST_URI']);
 ?>
 
-<!-- <?= $_SERVER['REQUEST_URI'] ?> -->
-
 <?php // "Include" === "Paste"
 
 // include 'functions.php';
