@@ -1,9 +1,16 @@
 <?php
 
+function consoleLog($msg)
+{
+    $parseMsg = json_encode($msg, JSON_HEX_TAG);
+    $consoleMsg = "console.log({$parseMsg})";
+    return $consoleMsg;
+}
+
 function formatArr($arr)
 {
-    $cleanArr = var_dump($arr);
-    return $cleanArr;
+    $newArr = var_dump($arr);
+    return $newArr;
 }
 
 function thisClass($uri)

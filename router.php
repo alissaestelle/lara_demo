@@ -1,6 +1,6 @@
 <?php
 
-$thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
+// $thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 function switchViews($uri)
 {
