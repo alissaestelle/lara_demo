@@ -1,3 +1,4 @@
+<!-- <pre>formatArr($_SERVER)</pre> -->
 <?php
 
 $thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
@@ -30,8 +31,6 @@ $routes = [
     '/contact' => 'controllers/contact.php'
 ];
 
-$err404 = 'views/404.php';
-
 function testController($arr, $x)
 {
     foreach ($arr as $k => $v) {
@@ -43,18 +42,10 @@ function testController($arr, $x)
 
 // testController($routes, $thisURI);
 
-function eHandler($e, $code)
+function liveController($arr, $k)
 {
-    http_response_code($code);
-    include $e;
-    // include "views/{$code}.php";
+    array_key_exists($k, $arr) ? include $arr[$k] : eHandler(404);
 }
 
-function liveController($arr, $k, $e)
-{
-    array_key_exists($k, $arr) ? include $arr[$k] : eHandler($e, 404);
-}
-
-liveController($routes, $thisURI, $err404);
-
+liveController($routes, $thisURI);
 ?>

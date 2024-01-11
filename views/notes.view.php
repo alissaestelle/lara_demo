@@ -11,11 +11,11 @@
         <!-- <p>This is the Notes Page.</p> -->
         <?php foreach ($notes as $n): ?>
           <?php
-          $thisID = $n['id'];
+          $noteID = $n['id'];
           $body = $n['body'];
           ?>
           <li>
-            <a href="/n?id=<?= $thisID ?>" class="text-blue-500 hover:underline">
+            <a href="/n?id=<?= $noteID ?>" class="text-blue-500 hover:underline">
             <?= $body ?></a>
           </li>
         <?php endforeach; ?>

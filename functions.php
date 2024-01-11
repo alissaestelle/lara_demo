@@ -13,6 +13,13 @@ function formatArr($arr)
     return $newArr;
 }
 
+function eHandler($code)
+{
+    http_response_code($code);
+    // include $e;
+    return include "views/{$code}.php";
+}
+
 function thisClass($uri)
 {
     $whiteText = 'bg-gray-900 text-white';
