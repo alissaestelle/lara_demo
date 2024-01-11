@@ -14,6 +14,9 @@
             <a href="/about" class="<?= thisClass(
                 '/about'
             ) ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+            <a href="/notes" class="<?= thisClass(
+                '/notes'
+            ) ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notes</a>
             <a href="/contact" class="<?= thisClass(
                 '/contact'
             ) ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
