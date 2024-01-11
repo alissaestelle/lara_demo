@@ -20,10 +20,10 @@ class Database
         // ↳ Double colons after classes enable access to any static methods belonging to that class.
     }
 
-    function query($req)
+    function query($req, $params = [])
     {
         $query = $this->connection->prepare($req);
-        $query->execute();
+        $query->execute($params);
 
         // return $query->fetchAll(PDO::FETCH_ASSOC);
         return $query;

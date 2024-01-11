@@ -14,15 +14,16 @@ $dbConfig = include 'config.php';
 
 $db = new Database($dbConfig['database'], 'alissa', '');
 
-// $post = $db->query('SELECT * FROM posts WHERE id = 1')->fetch();
+// $post = $db->query('SELECT * FROM posts')->fetchAll();
 // $posts = $db->query('SELECT * FROM posts WHERE id > 1')->fetchAll();
+
+$userID = $_GET['id'];
+// $test = 'SELECT * FROM posts WHERE id = ?';
+$test = 'SELECT * FROM posts WHERE id = :id';
+$posts = $db->query($test, ['id' => $userID])->fetch();
 ?>
 
-<pre><?= formatArr($db) ?></pre>
-
-<!-- <?php foreach ($posts as $p): ?>
-<li><?= $p['title'] ?></li>
-<?php endforeach; ?> -->
+<pre><?= formatArr($posts) ?></pre>
 
 <script><?= consoleLog($db) ?></script>
 
