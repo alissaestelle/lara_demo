@@ -8,17 +8,10 @@
     <?php include 'partials/banner.php'; ?>
     <main>
       <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-        <!-- <p>This is the Notes Page.</p> -->
-        <?php foreach ($notes as $n): ?>
-          <?php
-          $thisID = $n['id'];
-          $body = $n['body'];
-          ?>
-          <li>
-            <a href="/n?id=<?= $thisID ?>" class="text-blue-500 hover:underline">
-            <?= $body ?></a>
-          </li>
-        <?php endforeach; ?>
+        <p class="mb-6"><?= $body ?></p>
+        <p>
+          <a href="/notes" class="text-blue-500 hover:underline">↳ Go Back to Notes</a>
+        </p>
       </div>
     </main>
   </div>

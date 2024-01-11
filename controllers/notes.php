@@ -1,9 +1,14 @@
 <?php
+$page = 'My Notes';
 
-$page = 'Notes'; ?>
+$dbConfig = include 'config.php';
+$db = new Database($dbConfig['database'], 'alissa', '');
 
-<?php // "Include" === "Paste"
+$notes = $db->query('SELECT * FROM notes WHERE userID = 1')->fetchAll();
 
-// include 'functions.php';
+// "Include" === "Paste"
+include 'views/notes.view.php';
+?>
 
-include 'views/notes.view.php'; ?>
+<!-- <pre><?= formatArr($notes) ?></pre> -->
+<script><?= consoleLog($notes) ?></script>

@@ -1,6 +1,6 @@
 <?php
 
-// $thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
+$thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 function switchViews($uri)
 {
@@ -26,6 +26,7 @@ $routes = [
     '/' => 'controllers/index.php',
     '/about' => 'controllers/about.php',
     '/notes' => 'controllers/notes.php',
+    '/n' => 'controllers/n.php',
     '/contact' => 'controllers/contact.php'
 ];
 

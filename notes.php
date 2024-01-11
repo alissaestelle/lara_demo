@@ -36,5 +36,13 @@ $query->execute();
 
 $posts = $query->fetchAll(PDO::FETCH_ASSOC);
 
+// $post = $db->query('SELECT * FROM posts')->fetchAll();
+// $posts = $db->query('SELECT * FROM posts WHERE id > 1')->fetchAll();
+
+// $userID = $_GET['id'] ?? '';
+// $test = 'SELECT * FROM posts WHERE id = ?';
+// $test = 'SELECT * FROM posts WHERE id = :id';
+// $posts = $db->query($test, ['id' => $userID])->fetch();
+
 
 ?>
