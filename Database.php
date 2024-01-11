@@ -6,6 +6,7 @@ class Database
     // $dsn → Data Source Name (String)
     // ↳ Examples: Port, Host, Database Name
     public PDO $connection;
+    public mixed $query;
 
     function __construct(
         public array $config,
@@ -22,11 +23,20 @@ class Database
 
     function query($req, $params = [])
     {
-        $query = $this->connection->prepare($req);
-        $query->execute($params);
+        $this->query = $this->connection->prepare($req);
+        $this->query->execute($params);
 
         // return $query->fetchAll(PDO::FETCH_ASSOC);
-        return $query;
+        // return $query;
+        return $this;
+    }
+
+    function find() {
+        return $this->query->fetch();
+    }
+
+    function findAll() {
+        return $this->query->fetchAll();
     }
 }
 ?>

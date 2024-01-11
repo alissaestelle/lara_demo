@@ -13,7 +13,7 @@ $noteID = ['id' => $_GET['id']];
 $statement = 'SELECT * FROM notes WHERE id = :id';
 $nView = 'views/n.view.php';
 
-$n = $db->query($statement, $noteID)->fetch();
+$n = $db->query($statement, $noteID)->find();
 
 // Check to See if Note Exists
 if (!$n) {
@@ -26,5 +26,6 @@ $body = $n['body'];
 $n['userID'] !== $thisUser ? eHandler(403) : include $nView;
 ?>
 
-<!-- <pre><?= formatArr($n) ?></pre> -->
-<script><?= consoleLog($n) ?></script>
+<!-- <pre>formatArr($db)</pre> -->
+<!-- <pre>formatArr($n)</pre> -->
+<!-- <script>consoleLog($n)</script> -->
