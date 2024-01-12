@@ -15,10 +15,12 @@ class Database
     ) {
         $buildQuery = http_build_query($this->config, '', ';');
         $dsn = "mysql:{$buildQuery}";
+
         $opts = [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC];
-        $this->connection = new PDO($dsn, $this->user, $this->pw, $opts);
         // Scope Resolution Operator → ::
         // ↳ Double colons after classes enable access to any static methods belonging to that class.
+
+        $this->connection = new PDO($dsn, $this->user, $this->pw, $opts);
     }
 
     function query($req, $params = [])
@@ -34,12 +36,14 @@ class Database
     function find()
     {
         $results = $this->query->fetch();
-        return $results ?? eHandler(404);
+        return $results ? $results : eHandler(404);
     }
 
     function findAll()
     {
-        return $this->query->fetchAll();
+        $results = $this->query->fetchAll();
+        return $results ? $results : eHandler(404);
     }
-}
-?>
+} ?>
+
+<!-- The query() fx was changed to incorporate query statements into the object itself versus simply returning them. Statements saved as attributes can now be applied to other methods, conditionals, etc. -->

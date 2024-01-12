@@ -16,8 +16,12 @@ function formatArr($arr)
 function eHandler($code)
 {
     http_response_code($code);
-    // include $e;
+    // Add Default View if the Provided Code Doesn't Have One
     return include "views/{$code}.php";
+}
+
+function validate()
+{
 }
 
 function thisClass($uri)
