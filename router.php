@@ -1,4 +1,5 @@
 <?php
+
 $routes = include 'routes.php';
 $thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
 

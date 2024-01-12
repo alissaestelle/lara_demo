@@ -1,7 +1,6 @@
 <?php
 
 // Class Example
-
 class Post
 {
     public string $author;
