@@ -4,8 +4,7 @@
   "description": "PHP Refresher Course",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "npx prettier . --write"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["PHP"],
   "author": "Alissa W",

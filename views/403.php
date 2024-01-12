@@ -4,7 +4,7 @@
 
 <body class="h-full">
   <div class="min-h-full">
-  <?php include 'partials/nav.php'; ?>
+    <?php include 'partials/nav.php'; ?>
     <main>
       <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold mt-4">Oops! Restricted Area 🛑</h1>
@@ -15,4 +15,5 @@
     </main>
   </div>
 </body>
+
 </html>

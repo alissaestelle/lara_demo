@@ -1,8 +1,0 @@
-{
-  "parser": "php",
-  "phpVersion": "8.0",
-  "plugins": ["@prettier/plugin-php"],
-  "braceStyle": "per-cs",
-  "singleQuote": true,
-  "trailingCommaPHP": false
-}

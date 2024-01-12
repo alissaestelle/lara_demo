@@ -1,4 +1,3 @@
-<!-- <pre>formatArr($_SERVER)</pre> -->
 <?php
 $routes = include 'routes.php';
 $thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
@@ -40,6 +39,3 @@ function liveController($arr, $k)
 }
 
 liveController($routes, $thisURI);
-
-
-?>

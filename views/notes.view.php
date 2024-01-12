@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-gray-100">
+
 <?php include 'partials/header.php'; ?>
 
 <body class="h-full">
@@ -10,14 +11,16 @@
       <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <!-- <p>This is the Notes Page.</p> -->
         <ul>
-          <?php foreach ($notes as $n): ?>
+          <?php foreach ($notes as $n) : ?>
             <?php
             $noteID = $n['id'];
             $body = $n['body'];
             ?>
             <li>
               <a href="/n?id=<?= $noteID ?>" class="text-blue-500 hover:underline">
-              <?= $body ?></a>
+                <?php // ↓ Converts HTML Tags to String Form 
+                ?>
+                <?= htmlspecialchars($body) ?></a>
             </li>
           <?php endforeach; ?>
         </ul>
@@ -28,4 +31,5 @@
     </main>
   </div>
 </body>
+
 </html>

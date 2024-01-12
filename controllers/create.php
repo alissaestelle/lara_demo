@@ -18,5 +18,3 @@ if ($reqType === 'POST') {
 }
 
 include 'views/create.view.php';
-
-?>

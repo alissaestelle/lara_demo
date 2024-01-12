@@ -76,7 +76,7 @@
     <!-- No. 1 (w/ Array)-->
     <ul class="hide">
       <?php foreach ($books as $book) {
-          echo "<li>{$book['title']}</li>";
+        echo "<li>{$book['title']}</li>";
       } ?>
     </ul>
     <!-- This loop renders each book title to the browser just like it should, but what if each book required a trademark symbol? -->
@@ -84,25 +84,25 @@
     <!-- No. 3 -->
     <ul class="hide">
       <?php foreach ($books as $book) {
-          echo "<li>{$book['title']}™️</li>";
+        echo "<li>{$book['title']}™️</li>";
       } ?>
     </ul>
     <!-- Note: Enclosing variables in curly braces is the cleanest way to concatenate strings. -->
 
     <!-- Alternate Loop Syntax (Best) -->
     <ul class="hide">
-      <?php foreach ($books as $book): ?>
-      <li><?= $book['title'] ?></li>
+      <?php foreach ($books as $book) : ?>
+        <li><?= $book['title'] ?></li>
       <?php endforeach; ?>
     </ul>
-  
+
     <h2>Recommended Books</h2>
     <ul>
-      <?php foreach ($books as $book): ?>
-      <li>
-        <a href=<?= $book['url'] ?> target="_blank">
-        <?= $book['title'] ?></a>
-      </li>
+      <?php foreach ($books as $book) : ?>
+        <li>
+          <a href=<?= $book['url'] ?> target="_blank">
+            <?= $book['title'] ?></a>
+        </li>
       <?php endforeach; ?>
     </ul>
   </div>
@@ -110,21 +110,21 @@
   <div>
     <h2 class="hide">Books by Andy Weir</h2>
     <ul class="hide">
-      <?php foreach (filterAuthors($books, 'Andy Weir') as $book): ?>
-          <li>
-            <a href=<?= $book['url'] ?> target="_blank">
+      <?php foreach (filterAuthors($books, 'Andy Weir') as $book) : ?>
+        <li>
+          <a href=<?= $book['url'] ?> target="_blank">
             <?= $book['title'] ?></a>
-          </li>
+        </li>
       <?php endforeach; ?>
     </ul>
 
     <h2 class="hide">Books Published After 1989</h2>
     <ul class="hide">
-      <?php foreach (filterDates($books) as $book): ?>
-          <li>
-            <a href=<?= $book['url'] ?> target="_blank">
+      <?php foreach (filterDates($books) as $book) : ?>
+        <li>
+          <a href=<?= $book['url'] ?> target="_blank">
             <?= $book['title'] ?></a> (<?= $book['publishYear'] ?>)
-          </li>
+        </li>
       <?php endforeach; ?>
     </ul>
 
@@ -133,11 +133,11 @@
     <!-- No. 1 -->
     <h2>Books by Andy Weir</h2>
     <ul>
-      <?php foreach ($andyWeir as $a): ?>
-          <li>
-            <a href=<?= $a['url'] ?> target="_blank">
+      <?php foreach ($andyWeir as $a) : ?>
+        <li>
+          <a href=<?= $a['url'] ?> target="_blank">
             <?= $a['title'] ?></a>
-          </li>
+        </li>
       <?php endforeach; ?>
     </ul>
   </div>
@@ -148,11 +148,11 @@
   <div>
     <h2>Books Published After 1989</h2>
     <ul>
-      <?php foreach ($post1989 as $y): ?>
-          <li>
-            <a href=<?= $y['url'] ?> target="_blank">
+      <?php foreach ($post1989 as $y) : ?>
+        <li>
+          <a href=<?= $y['url'] ?> target="_blank">
             <?= $y['title'] ?></a> (<?= $y['publishYear'] ?>)
-          </li>
+        </li>
       <?php endforeach; ?>
     </ul>
   </div>
@@ -164,11 +164,11 @@
   <div>
     <h2>Books by Philip K. Dick</h2>
     <ul>
-      <?php foreach ($anonAuthors as $a): ?>
-          <li>
-            <a href=<?= $a['url'] ?> target="_blank">
+      <?php foreach ($anonAuthors as $a) : ?>
+        <li>
+          <a href=<?= $a['url'] ?> target="_blank">
             <?= $a['title'] ?></a>
-          </li>
+        </li>
       <?php endforeach; ?>
     </ul>
   </div>
@@ -176,11 +176,11 @@
   <div>
     <h2>Books by Stephen King</h2>
     <ul>
-      <?php foreach ($flexFilter as $f): ?>
-          <li>
-            <a href=<?= $f['url'] ?> target="_blank">
+      <?php foreach ($flexFilter as $f) : ?>
+        <li>
+          <a href=<?= $f['url'] ?> target="_blank">
             <?= $f['title'] ?></a>
-          </li>
+        </li>
       <?php endforeach; ?>
     </ul>
   </div>
@@ -188,11 +188,11 @@
   <div>
     <h2>Books Published Before 1970</h2>
     <ul>
-      <?php foreach ($flexFilter as $f): ?>
-          <li>
-            <a href=<?= $f['url'] ?> target="_blank">
+      <?php foreach ($flexFilter as $f) : ?>
+        <li>
+          <a href=<?= $f['url'] ?> target="_blank">
             <?= $f['title'] ?></a> (<?= $f['publishYear'] ?>)
-          </li>
+        </li>
       <?php endforeach; ?>
     </ul>
   </div>

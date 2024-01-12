@@ -26,7 +26,7 @@ $books = [
         'author' => 'Philip K. Dick',
         'publishYear' => '1968',
         'url' =>
-            'https://www.goodreads.com/book/show/36402034-do-androids-dream-of-electric-sheep'
+        'https://www.goodreads.com/book/show/36402034-do-androids-dream-of-electric-sheep'
     ],
     [
         'title' => 'One Past Midnight: The Langoliers',
@@ -45,7 +45,7 @@ $books = [
         'author' => 'Andy Weir',
         'publishYear' => '2021',
         'url' =>
-            'https://www.goodreads.com/book/show/54493401-project-hail-mary'
+        'https://www.goodreads.com/book/show/54493401-project-hail-mary'
     ]
 ];
 
@@ -141,5 +141,3 @@ $flexFilter = filterFn($books, function ($book) {
 // The above example is the same function as the one on L:107, except it's second parameter is now an anonymous function.
 
 // Note: PHP has an in-built function called array_filter() that accepts the same arguments as filterFn() and could replace it and work just as easily.
-
-?>

@@ -20,4 +20,3 @@ $body = $n['body'];
 
 // 3. Validate User
 $n && $n['userID'] === $thisUser ? include $nView : eHandler(403);
-?>

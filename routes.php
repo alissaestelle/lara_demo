@@ -8,5 +8,3 @@ return [
     '/n' => 'controllers/n.php',
     '/contact' => 'controllers/contact.php'
 ];
-
-?>

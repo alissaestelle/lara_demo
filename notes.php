@@ -44,5 +44,4 @@ $posts = $query->fetchAll(PDO::FETCH_ASSOC);
 // $test = 'SELECT * FROM posts WHERE id = :id';
 // $posts = $db->query($test, ['id' => $userID])->fetch();
 
-
 ?>

@@ -30,4 +30,4 @@ function thisClass($uri)
     $grayText = 'text-gray-300';
 
     return $_SERVER['REQUEST_URI'] === $uri ? $whiteText : $grayText;
-} ?>
+}
