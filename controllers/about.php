@@ -1,6 +1,4 @@
-<?php
-
-$page = 'About'; ?>
+<?php $page = 'About'; ?>
 
 <?php // "Include" === "Paste"
 

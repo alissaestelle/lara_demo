@@ -9,16 +9,21 @@
     <main>
       <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <!-- <p>This is the Notes Page.</p> -->
-        <?php foreach ($notes as $n): ?>
-          <?php
-          $noteID = $n['id'];
-          $body = $n['body'];
-          ?>
-          <li>
-            <a href="/n?id=<?= $noteID ?>" class="text-blue-500 hover:underline">
-            <?= $body ?></a>
-          </li>
-        <?php endforeach; ?>
+        <ul>
+          <?php foreach ($notes as $n): ?>
+            <?php
+            $noteID = $n['id'];
+            $body = $n['body'];
+            ?>
+            <li>
+              <a href="/n?id=<?= $noteID ?>" class="text-blue-500 hover:underline">
+              <?= $body ?></a>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+        <p class="mt-6">
+          <a href="/notes/create" class="text-blue-500 hover:underline">Create Note</a>
+        </p>
       </div>
     </main>
   </div>

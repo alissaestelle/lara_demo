@@ -16,14 +16,16 @@ $nView = 'views/n.view.php';
 $n = $db->query($statement, $noteID)->find();
 
 // Check to See if Note Exists
-if (!$n) {
-    eHandler(404);
+// if (!$n) {
+//     eHandler(404);
+// }
+
+function validate()
+{
 }
 
-$body = $n['body'];
-
 // ** Note Exists ** But User Isn't Authorized
-$n['userID'] !== $thisUser ? eHandler(403) : include $nView;
+$n && $n['userID'] === $thisUser ? include $nView : eHandler(403);
 ?>
 
 <!-- <pre>formatArr($db)</pre> -->

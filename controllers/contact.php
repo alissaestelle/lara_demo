@@ -1,6 +1,4 @@
-<?php
-
-$page = 'Contact'; ?>
+<?php $page = 'Contact'; ?>
 
 <?php // "Include" === "Paste"
 

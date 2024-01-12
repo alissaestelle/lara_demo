@@ -1,6 +1,6 @@
 <!-- <pre>formatArr($_SERVER)</pre> -->
 <?php
-
+$routes = include 'routes.php';
 $thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 function switchViews($uri)
@@ -23,14 +23,6 @@ function switchViews($uri)
 
 // switchViews($thisURI);
 
-$routes = [
-    '/' => 'controllers/index.php',
-    '/about' => 'controllers/about.php',
-    '/notes' => 'controllers/notes.php',
-    '/n' => 'controllers/n.php',
-    '/contact' => 'controllers/contact.php'
-];
-
 function testController($arr, $x)
 {
     foreach ($arr as $k => $v) {
@@ -48,4 +40,6 @@ function liveController($arr, $k)
 }
 
 liveController($routes, $thisURI);
+
+
 ?>

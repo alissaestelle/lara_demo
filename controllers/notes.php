@@ -10,5 +10,4 @@ $notes = $db->query('SELECT * FROM notes WHERE userID = 1')->findAll();
 include 'views/notes.view.php';
 ?>
 
-
 <!-- <pre>formatArr($notes)</pre> -->

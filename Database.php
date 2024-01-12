@@ -31,11 +31,14 @@ class Database
         return $this;
     }
 
-    function find() {
-        return $this->query->fetch();
+    function find()
+    {
+        $results = $this->query->fetch();
+        return $results ?? eHandler(404);
     }
 
-    function findAll() {
+    function findAll()
+    {
         return $this->query->fetchAll();
     }
 }

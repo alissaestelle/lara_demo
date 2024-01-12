@@ -1,5 +1,4 @@
 <?php
-
 $page = 'Home';
 // echo nl2br("Test Text \n");
 // Note: The echo keyword only accepts string values.
