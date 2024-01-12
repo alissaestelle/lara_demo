@@ -11,20 +11,22 @@
                 <!-- <p>This is the Notes Page.</p> -->
                 <ul>
                     <?php foreach ($notes as $n) : ?>
-                        <?php
+                    <?php
                         $noteID = $n['id'];
                         $body = $n['body'];
                         ?>
-                        <li>
-                            <a href="/n?id=<?= $noteID ?>" class="text-blue-500 hover:underline">
-                                <?php // ↓ Converts HTML Tags to String Form 
+                    <li>
+                        <a href="/n?id=<?= $noteID ?>"
+                           class="text-blue-500 hover:underline">
+                            <?php // ↓ Converts HTML Tags to String Form 
                                 ?>
-                                <?= htmlspecialchars($body) ?></a>
-                        </li>
+                            <?= htmlspecialchars($body) ?></a>
+                    </li>
                     <?php endforeach; ?>
                 </ul>
                 <p class="mt-6">
-                    <a href="/notes/create" class="text-blue-500 hover:underline">Create Note</a>
+                    <a href="/notes/create"
+                       class="text-blue-500 hover:underline">Create Note</a>
                 </p>
             </div>
         </main>

@@ -3,21 +3,28 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
     <title>Demo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;1,300&display=swap"
+          rel="stylesheet">
 
     <style>
-        <?php include './style.css'; ?>
+    <?php include './style.css';
+    ?>
     </style>
 </head>
 
 <body>
     <?php include './logic.php'; ?>
 
-    <h1 id="ex-1" class="hide">
+    <h1 id="ex-1"
+        class="hide">
         <!-- PHP Syntax -->
 
         <!-- No. 1 -->
@@ -27,7 +34,8 @@
         <?php print 'Hello, Universe'; ?>
     </h1>
 
-    <h1 id="ex-2" class="hide">
+    <h1 id="ex-2"
+        class="hide">
         <!-- Concatenation Methods w/ Variables -->
 
         <!-- No. 1 (Periods) -->
@@ -92,17 +100,18 @@
         <!-- Alternate Loop Syntax (Best) -->
         <ul class="hide">
             <?php foreach ($books as $book) : ?>
-                <li><?= $book['title'] ?></li>
+            <li><?= $book['title'] ?></li>
             <?php endforeach; ?>
         </ul>
 
         <h2>Recommended Books</h2>
         <ul>
             <?php foreach ($books as $book) : ?>
-                <li>
-                    <a href=<?= $book['url'] ?> target="_blank">
-                        <?= $book['title'] ?></a>
-                </li>
+            <li>
+                <a href=<?= $book['url'] ?>
+                   target="_blank">
+                    <?= $book['title'] ?></a>
+            </li>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -111,20 +120,22 @@
         <h2 class="hide">Books by Andy Weir</h2>
         <ul class="hide">
             <?php foreach (filterAuthors($books, 'Andy Weir') as $book) : ?>
-                <li>
-                    <a href=<?= $book['url'] ?> target="_blank">
-                        <?= $book['title'] ?></a>
-                </li>
+            <li>
+                <a href=<?= $book['url'] ?>
+                   target="_blank">
+                    <?= $book['title'] ?></a>
+            </li>
             <?php endforeach; ?>
         </ul>
 
         <h2 class="hide">Books Published After 1989</h2>
         <ul class="hide">
             <?php foreach (filterDates($books) as $book) : ?>
-                <li>
-                    <a href=<?= $book['url'] ?> target="_blank">
-                        <?= $book['title'] ?></a> (<?= $book['publishYear'] ?>)
-                </li>
+            <li>
+                <a href=<?= $book['url'] ?>
+                   target="_blank">
+                    <?= $book['title'] ?></a> (<?= $book['publishYear'] ?>)
+            </li>
             <?php endforeach; ?>
         </ul>
 
@@ -134,10 +145,11 @@
         <h2>Books by Andy Weir</h2>
         <ul>
             <?php foreach ($andyWeir as $a) : ?>
-                <li>
-                    <a href=<?= $a['url'] ?> target="_blank">
-                        <?= $a['title'] ?></a>
-                </li>
+            <li>
+                <a href=<?= $a['url'] ?>
+                   target="_blank">
+                    <?= $a['title'] ?></a>
+            </li>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -149,10 +161,11 @@
         <h2>Books Published After 1989</h2>
         <ul>
             <?php foreach ($post1989 as $y) : ?>
-                <li>
-                    <a href=<?= $y['url'] ?> target="_blank">
-                        <?= $y['title'] ?></a> (<?= $y['publishYear'] ?>)
-                </li>
+            <li>
+                <a href=<?= $y['url'] ?>
+                   target="_blank">
+                    <?= $y['title'] ?></a> (<?= $y['publishYear'] ?>)
+            </li>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -165,10 +178,11 @@
         <h2>Books by Philip K. Dick</h2>
         <ul>
             <?php foreach ($anonAuthors as $a) : ?>
-                <li>
-                    <a href=<?= $a['url'] ?> target="_blank">
-                        <?= $a['title'] ?></a>
-                </li>
+            <li>
+                <a href=<?= $a['url'] ?>
+                   target="_blank">
+                    <?= $a['title'] ?></a>
+            </li>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -177,10 +191,11 @@
         <h2>Books by Stephen King</h2>
         <ul>
             <?php foreach ($flexFilter as $f) : ?>
-                <li>
-                    <a href=<?= $f['url'] ?> target="_blank">
-                        <?= $f['title'] ?></a>
-                </li>
+            <li>
+                <a href=<?= $f['url'] ?>
+                   target="_blank">
+                    <?= $f['title'] ?></a>
+            </li>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -189,10 +204,11 @@
         <h2>Books Published Before 1970</h2>
         <ul>
             <?php foreach ($flexFilter as $f) : ?>
-                <li>
-                    <a href=<?= $f['url'] ?> target="_blank">
-                        <?= $f['title'] ?></a> (<?= $f['publishYear'] ?>)
-                </li>
+            <li>
+                <a href=<?= $f['url'] ?>
+                   target="_blank">
+                    <?= $f['title'] ?></a> (<?= $f['publishYear'] ?>)
+            </li>
             <?php endforeach; ?>
         </ul>
     </div>
