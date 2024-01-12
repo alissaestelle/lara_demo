@@ -13,8 +13,8 @@
                         <div class="grid grid-cols-1 gap-x-8 gap-y-4 border-b border-gray-900/10 pb-12 md:grid-cols-3">
                             <div>
                                 <h2 class="text-base font-semibold leading-7 text-gray-900">Create</h2>
-                                <p class="mt-1 text-sm leading-6 text-gray-600">New notes will be added to your notes
-                                    index.</p>
+                                <p class="mt-1 text-sm leading-6 text-gray-600">
+                                    New notes will be added to your notes index.</p>
                             </div>
 
                             <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
@@ -41,8 +41,13 @@
                                                   name="body"
                                                   rows="3"
                                                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                                        <?php if (!empty($alert)): ?>
+                                        <p class="text-red-500 text-sm mt-4"><?= $alert ?></p>
+                                        <?php $alert = '' ?>
+                                        <?php endif; ?>
                                     </div>
-                                    <p class="mt-3 text-sm leading-6 text-gray-600">Shower thoughts, a long item list,
+                                    <p class="mt-3 text-sm leading-6 text-gray-600">
+                                        Shower thoughts, a long item list,
                                         daily reminders, etc.</p>
                                 </div>
                             </div>
