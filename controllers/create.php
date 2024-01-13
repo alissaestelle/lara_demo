@@ -5,17 +5,19 @@ $dbConfig = include 'config.php';
 $db = new Database($dbConfig['database'], 'alissa', '');
 
 $reqType = $_SERVER['REQUEST_METHOD'];
-$statement = 'INSERT INTO notes (body, userID) VALUES (:body, :userID)';
+$statement = 'INSERT INTO notes (title, body, userID) VALUES (:title, :body, :userID)';
 $alert = '';
 
 if ($reqType === 'POST') {
+    $postTitle = $_POST['title'];
     $postBody = $_POST['body'];
     $charLength = strlen($postBody);
 
-    function checkPass($x, $y, $z)
+    function checkPass($b, $t, $x, $y)
     {
         $config = [
-            'body' => $z,
+            'title' => $t,
+            'body' => $b,
             // 'userID' => $_POST['userID']
             'userID' => 2
         ];
@@ -35,10 +37,10 @@ if ($reqType === 'POST') {
 
     $alert =
         checkFail($charLength, $postBody) ?:
-        checkPass($db, $statement, $postBody);
+        checkPass($postBody, $postTitle, $db, $statement);
 }
 
-function statusColor($x)
+function toggleColor($x)
 {
     $greenText = 'text-green-500';
     $redText = 'text-red-600';

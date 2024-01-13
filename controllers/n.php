@@ -1,5 +1,4 @@
 <?php
-$page = 'Note';
 
 $dbConfig = include 'config.php';
 $db = new Database($dbConfig['database'], 'alissa', '');
@@ -14,6 +13,8 @@ $nView = 'views/n.view.php';
 
 // 1. Validate Results
 $n = $db->query($statement, $noteID)->find();
+
+$page = $n && $n['title'] ? $n['title'] : 'My Note';
 
 // 3. Validate User
 $n && $n['userID'] === $thisUser ? include $nView : eHandler(403);

@@ -14,6 +14,7 @@
                     <?php foreach ($notes as $n) : ?>
                     <?php
                             $noteID = $n['id'];
+                            $title = $n['title'];
                             $body = $n['body'];
                             ?>
                     <li>
@@ -21,14 +22,14 @@
                            class="text-blue-500 hover:underline">
                             <?php // ↓ Converts HTML Tags to String Form 
                                     ?>
-                            <?= htmlspecialchars($body) ?></a>
+                            <?= htmlspecialchars($title) ?></a>
                     </li>
                     <?php endforeach; ?>
                 </ul>
                 <?php endif; ?>
                 <p class="mt-6">
                     <a href="/notes/create"
-                       class="text-blue-500 hover:underline">Create Note</a>
+                       class="text-blue-500 hover:underline">↳ Create Note</a>
                 </p>
             </div>
         </main>

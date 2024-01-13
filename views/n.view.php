@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+$title = $n['title'];
+$body = $n['body']; ?>
+
 <?php include 'partials/header.php'; ?>
-<?php $body = $n['body']; ?>
 
 <body class="h-full">
     <div class="min-h-full">
