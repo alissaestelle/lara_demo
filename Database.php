@@ -36,13 +36,15 @@ class Database
     function find()
     {
         $results = $this->query->fetch();
-        return $results ? $results : eHandler(404);
+        // return $results ?: eHandler(404);
+        return $results;
     }
 
     function findAll()
     {
         $results = $this->query->fetchAll();
-        return $results ? $results : eHandler(404);
+        // return $results ?: eHandler(404);
+        return $results;
     }
 } ?>
 

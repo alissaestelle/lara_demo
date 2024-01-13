@@ -1,4 +1,3 @@
-<!-- <pre>formatArr($_SERVER)</pre> -->
 <?php
 $page = 'New Note';
 
@@ -18,11 +17,11 @@ if ($reqType === 'POST') {
         $config = [
             'body' => $z,
             // 'userID' => $_POST['userID']
-            'userID' => 1
+            'userID' => 2
         ];
 
-        $validData = $x->query($y, $config);
-        return $validData;
+        $x->query($y, $config);
+        return 'Success';
     }
 
     function checkFail($x, $y)
@@ -39,6 +38,12 @@ if ($reqType === 'POST') {
         checkPass($db, $statement, $postBody);
 }
 
-include 'views/create.view.php';
+function statusColor($x)
+{
+    $greenText = 'text-green-500';
+    $redText = 'text-red-600';
 
-?>
+    return $x === 'Success' ? $greenText : $redText;
+}
+
+include 'views/create.view.php';
