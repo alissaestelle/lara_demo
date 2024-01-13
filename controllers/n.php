@@ -7,7 +7,7 @@ $db = new Database($dbConfig['database'], 'alissa', '');
 // $userConfig = ['user' => 1, 'id' => $_GET['id']];
 // $statement = 'SELECT * FROM notes WHERE userID = :user AND id = :id';
 
-$thisUser = 2;
+$thisUser = 1;
 $noteID = ['id' => $_GET['id']];
 $statement = 'SELECT * FROM notes WHERE id = :id';
 $nView = 'views/n.view.php';

@@ -1,3 +1,4 @@
+<!-- <pre>formatArr($_SERVER)</pre> -->
 <?php
 $page = 'New Note';
 
@@ -6,37 +7,38 @@ $db = new Database($dbConfig['database'], 'alissa', '');
 
 $reqType = $_SERVER['REQUEST_METHOD'];
 $statement = 'INSERT INTO notes (body, userID) VALUES (:body, :userID)';
+$alert = '';
 
 if ($reqType === 'POST') {
     $postBody = $_POST['body'];
-    
+    $charLength = strlen($postBody);
+
     function checkPass($x, $y, $z)
     {
         $config = [
             'body' => $z,
             // 'userID' => $_POST['userID']
-            'userID' => 2
+            'userID' => 1
         ];
 
         $validData = $x->query($y, $config);
         return $validData;
     }
 
-    function checkFail($a) {
-        return $a;
+    function checkFail($x, $y)
+    {
+        $zero = ($x === 0) ? 'Body Required' : false;
+        $oneK = ($x > 1000) ? 'Character Maximum Exceeded' : false;
+        $message = $zero ?: $oneK ?: false;
+
+        return $message;
     }
 
-    (strlen($postBody) === 0
-            ? $alert = checkFail('Body Required')
-            : strlen($postBody) > 1000)
-        ? $alert = checkFail('Character Maximum Exceeded')
-        : checkPass($db, $statement, $postBody);
-        
-    include 'views/create.view.php';
+    $alert =
+        checkFail($charLength, $postBody) ?:
+        checkPass($db, $statement, $postBody);
 }
 
-// include 'views/create.view.php';
-?>
+include 'views/create.view.php';
 
-<script>
-</script>
+?>
