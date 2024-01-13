@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'partials/header.php'; ?>
+<?php
+$title = $_POST['title'] ?? '';
+$body = $_POST['body'] ?? '';
+?>
+
 
 <body class="h-full">
     <div class="min-h-full">
@@ -29,6 +34,7 @@
                                             <input type="text"
                                                    id="title"
                                                    name="title"
+                                                   value="<?= $title ?>"
                                                    class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                                    placeholder="Add Title Here">
                                         </div>
@@ -42,7 +48,7 @@
                                         <textarea id="body"
                                                   name="body"
                                                   rows="3"
-                                                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                                                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"><?= $body ?></textarea>
                                     </div>
                                     <?php if ($alert) : ?>
                                     <p class="<?= toggleColor($alert) ?> mt-4">

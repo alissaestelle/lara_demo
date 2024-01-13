@@ -1,4 +1,6 @@
 <?php
+include 'Validator.php';
+
 $page = 'New Note';
 
 $dbConfig = include 'config.php';
@@ -8,10 +10,12 @@ $reqType = $_SERVER['REQUEST_METHOD'];
 $statement = 'INSERT INTO notes (title, body, userID) VALUES (:title, :body, :userID)';
 $alert = '';
 
+$validator = new Validator();
+
 if ($reqType === 'POST') {
     $postTitle = $_POST['title'];
     $postBody = $_POST['body'];
-    $charLength = strlen($postBody);
+    // $charLength = strlen($postBody);
 
     function checkPass($b, $t, $x, $y)
     {
@@ -26,7 +30,7 @@ if ($reqType === 'POST') {
         return 'Success';
     }
 
-    function checkFail($x, $y)
+    function checkFail($x)
     {
         $zero = ($x === 0) ? 'Body Required' : false;
         $oneK = ($x > 1000) ? 'Character Maximum Exceeded' : false;
@@ -36,7 +40,7 @@ if ($reqType === 'POST') {
     }
 
     $alert =
-        checkFail($charLength, $postBody) ?:
+        checkFail($validator->checkStr($postBody)) ?:
         checkPass($postBody, $postTitle, $db, $statement);
 }
 
