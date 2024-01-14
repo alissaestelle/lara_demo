@@ -10,12 +10,9 @@ $reqType = $_SERVER['REQUEST_METHOD'];
 $statement = 'INSERT INTO notes (title, body, userID) VALUES (:title, :body, :userID)';
 $alert = '';
 
-$validator = new Validator();
-
 if ($reqType === 'POST') {
     $postTitle = $_POST['title'];
     $postBody = $_POST['body'];
-    // $charLength = strlen($postBody);
 
     function checkPass($b, $t, $x, $y)
     {
@@ -30,17 +27,8 @@ if ($reqType === 'POST') {
         return 'Success';
     }
 
-    function checkFail($x)
-    {
-        $zero = ($x === 0) ? 'Body Required' : false;
-        $oneK = ($x > 1000) ? 'Character Maximum Exceeded' : false;
-        $message = $zero ?: $oneK ?: false;
-
-        return $message;
-    }
-
     $alert =
-        checkFail($validator->checkStr($postBody)) ?:
+        Validator::checkStr($postBody, 1, 1000) ?:
         checkPass($postBody, $postTitle, $db, $statement);
 }
 
@@ -52,4 +40,4 @@ function toggleColor($x)
     return $x === 'Success' ? $greenText : $redText;
 }
 
-include 'views/create.view.php';
+include 'views/notes/create.view.php';

@@ -9,7 +9,7 @@ $db = new Database($dbConfig['database'], 'alissa', '');
 $thisUser = 2;
 $noteID = ['id' => $_GET['id']];
 $statement = 'SELECT * FROM notes WHERE id = :id';
-$nView = 'views/n.view.php';
+$nView = 'views/notes/n.view.php';
 
 // 1. Validate Results
 $n = $db->query($statement, $noteID)->find();
