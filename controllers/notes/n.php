@@ -1,20 +1,21 @@
 <?php
 
-$dbConfig = include 'config.php';
+$dbConfig = include basePath('config.php');
 $db = new Database($dbConfig['database'], 'alissa', '');
 
 // $userConfig = ['user' => 1, 'id' => $_GET['id']];
 // $statement = 'SELECT * FROM notes WHERE userID = :user AND id = :id';
 
-$thisUser = 2;
+$thisUser = 1;
 $noteID = ['id' => $_GET['id']];
 $statement = 'SELECT * FROM notes WHERE id = :id';
-$nView = 'views/notes/n.view.php';
+$nView = 'notes/n.view.php';
 
 // 1. Validate Results
 $n = $db->query($statement, $noteID)->find();
 
 $page = $n['title'] ?? 'My Note';
+$viewData = ['page' => $page, 'n' => $n];
 
 // 3. Validate User
-$n && $n['userID'] === $thisUser ? include $nView : eHandler(403);
+$n && $n['userID'] === $thisUser ? viewPath($nView, $viewData) : eHandler(403);

@@ -31,3 +31,7 @@ function thisClass($uri)
 
     return $_SERVER['REQUEST_URI'] === $uri ? $whiteText : $grayText;
 }
+
+// function basePath($path) {
+//     return BASE_PATH .$path;
+// }

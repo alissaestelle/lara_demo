@@ -1,10 +1,8 @@
 <?php
-$page = 'My Notes';
-
-$dbConfig = include 'config.php';
+$dbConfig = include basePath('config.php');
 $db = new Database($dbConfig['database'], 'alissa', '');
 
-$notes = $db->query('SELECT * FROM notes WHERE userID = 2')->findAll();
+$notes = $db->query('SELECT * FROM notes WHERE userID = 1')->findAll();
+$viewData = ['page' => 'My Notes', 'notes' => $notes];
 
-// "Include" === "Paste"
-include 'views/notes/index.view.php';
+viewPath('notes/index.view.php', $viewData);

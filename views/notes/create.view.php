@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'views/partials/header.php'; ?>
+<?php include basePath('views/partials/header.php'); ?>
 <?php
 $title = $_POST['title'] ?? '';
 $body = $_POST['body'] ?? '';
 ?>
 
-
 <body class="h-full">
     <div class="min-h-full">
-        <?php include 'views/partials/nav.php'; ?>
-        <?php include 'views/partials/banner.php'; ?>
+        <?php include basePath('views/partials/nav.php'); ?>
+        <?php include basePath('views/partials/banner.php'); ?>
         <main>
             <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                 <form method="POST">
@@ -50,7 +49,7 @@ $body = $_POST['body'] ?? '';
                                                   rows="3"
                                                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"><?= $body ?></textarea>
                                     </div>
-                                    <?php if ($alert) : ?>
+                                    <?php if ($alert): ?>
                                     <p class="<?= toggleColor($alert) ?> mt-4">
                                         <?= $alert ?></p>
                                     <?php endif; ?>

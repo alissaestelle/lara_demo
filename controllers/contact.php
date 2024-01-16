@@ -1,8 +1,6 @@
-<?php $page = 'Contact'; ?>
+<?php
+$viewData = ['page' => 'Contact'];
 
-<?php // "Include" === "Paste"
-
-// include 'functions.php';
-include 'views/contact.view.php';
-
+viewPath('contact.view.php', $viewData);
+// ↳ Output: /Users/alissa/Desktop/KML/lara_sandbox/demo/views/contact.view.php
 ?>

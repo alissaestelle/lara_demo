@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'views/partials/header.php'; ?>
+<?php include basePath('views/partials/header.php'); ?>
 <?php
 $title = $n['title'] ?? '';
 $body = $n['body'] ?? ''; ?>
 
 <body class="h-full">
     <div class="min-h-full">
-        <?php include 'views/partials/nav.php'; ?>
-        <?php include 'views/partials/banner.php'; ?>
+        <?php include basePath('views/partials/nav.php'); ?>
+        <?php include basePath('views/partials/banner.php'); ?>
         <main>
             <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                 <?php if ($body) : ?>

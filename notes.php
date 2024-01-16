@@ -1,5 +1,18 @@
 <?php
 
+// ** GENERAL **
+
+// echo nl2br("Test Text \n");
+// Note: The echo keyword only accepts string values.
+
+// Note: var_dump() accepts all datatypes.
+
+// Superglobals
+// ↳ PHP includes universal variables that can be used in any script/file (i.e. $_SERVER).
+
+// "Include" === "Paste"
+
+
 // Class Example
 class Post
 {

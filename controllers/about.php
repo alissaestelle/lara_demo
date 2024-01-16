@@ -1,7 +1,6 @@
-<?php $page = 'About'; ?>
+<?php
+$viewData = ['page' => 'About'];
 
-<?php // "Include" === "Paste"
-
-// include 'functions.php';
-
-include 'views/about.view.php'; ?>
+viewPath('about.view.php', $viewData);
+// ↳ Output: /Users/alissa/Desktop/KML/lara_sandbox/demo/views/about.view.php
+?>

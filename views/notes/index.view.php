@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'views/partials/header.php'; ?>
+<?php include basePath('views/partials/header.php'); ?>
 
 <body class="h-full">
     <div class="min-h-full">
-        <?php include 'views/partials/nav.php'; ?>
-        <?php include 'views/partials/banner.php'; ?>
+        <?php include basePath('views/partials/nav.php'); ?>
+        <?php include basePath('views/partials/banner.php'); ?>
         <main>
             <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                 <!-- <p>This is the Notes Page.</p> -->
-                <?php if (!empty($notes)) : ?>
+                <?php if (!empty($notes)): ?>
                 <ul>
-                    <?php foreach ($notes as $n) : ?>
+                    <?php foreach ($notes as $n): ?>
                     <?php
-                            $noteID = $n['id'];
-                            $title = $n['title'];
-                            $body = $n['body'];
-                            ?>
+                    $noteID = $n['id'];
+                    $title = $n['title'];
+                    $body = $n['body'];
+                    ?>
                     <li>
                         <a href="/n?id=<?= $noteID ?>"
                            class="text-blue-500 hover:underline">
-                            <?php // ↓ Converts HTML Tags to String Form 
-                                    ?>
                             <?= htmlspecialchars($title) ?></a>
                     </li>
                     <?php endforeach; ?>
@@ -37,3 +35,5 @@
 </body>
 
 </html>
+
+<!-- Note: htmlspecialchars() converts HTML tags to string form. -->
