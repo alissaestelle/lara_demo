@@ -1,5 +1,10 @@
 <?php // Connect to MySQL Database → Execute Query
 
+namespace App;
+
+// PDO is a class provided by PHP and is considered a global class. It simply needs to be enabled with the 'use' keyword.
+use PDO;
+
 class Database
 {
     // PDO → PHP Data Object

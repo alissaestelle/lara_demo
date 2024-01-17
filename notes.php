@@ -33,6 +33,13 @@ $phpBasics = new Post('Understanding PHP Basics');
 $phpBasics->author = 'Alissa Wiley';
 ?>
 
+<?php 
+
+// Namespacing is a way to organize/route class files. If a given folder contains a collection of class files, the namepace for those files would be the name of the folder. If those classes were then used in other parts of the project later, they could be imported with the 'use' keyword (i.e. use <Folder>/<Class>)
+
+?>
+
+
 <?php
 // Connect to MySQL Database Example
 

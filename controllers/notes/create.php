@@ -1,5 +1,7 @@
 <?php
-include basePath('Classes/Validator.php');
+// include basePath('Classes/Validator.php');
+use App\Database;
+use App\Validator;
 
 $dbConfig = include basePath('config.php');
 $db = new Database($dbConfig['database'], 'alissa', '');

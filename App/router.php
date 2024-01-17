@@ -1,6 +1,6 @@
 <?php
 
-$routes = include 'routes.php';
+$routes = include basePath('routes.php');
 $thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 function switchViews($uri)
@@ -36,7 +36,7 @@ function testController($arr, $x)
 
 function liveController($arr, $k)
 {
-    array_key_exists($k, $arr) ? include $arr[$k] : eHandler(404);
+    array_key_exists($k, $arr) ? include basePath($arr[$k]) : eHandler(404);
 }
 
 liveController($routes, $thisURI);

@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Validator
 {
     static function checkStr($str, $min = 1, $max = INF)

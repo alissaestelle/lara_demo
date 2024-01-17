@@ -1,4 +1,5 @@
 <?php
+use App\Database;
 
 $dbConfig = include basePath('config.php');
 $db = new Database($dbConfig['database'], 'alissa', '');
