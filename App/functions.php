@@ -17,7 +17,7 @@ function eHandler($code)
 {
     http_response_code($code);
     // Add Default View if the Provided Code Doesn't Have One
-    return include "views/{$code}.php";
+    return viewPath("{$code}.php");
 }
 
 function validate()
