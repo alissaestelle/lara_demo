@@ -4,13 +4,16 @@ namespace App;
 
 class Router
 {
+    // protected array $routes = [];
     public array $routes = [];
 
-    function route()
+    function route($x, $y)
     {
         foreach ($this->routes as $route) {
-            foreach ($route as $k => $v) {
-            }
+            extract($route);
+            $uri === $x && $method === $y ? include basePath($controller) : '';
+            // Needs Logic for Failed Matches
+            
         }
     }
 
@@ -32,7 +35,7 @@ class Router
         ];
     }
 
-    function put($x, $y)
+    function update($x, $y)
     {
         $this->routes[] = [
             'uri' => $x,
@@ -50,9 +53,6 @@ class Router
         ];
     }
 }
-
-// $routes = include basePath('routes.php');
-// $thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 function switchViews($uri)
 {

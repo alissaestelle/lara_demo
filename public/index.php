@@ -19,9 +19,6 @@ function viewPath($path, $attr = [])
 include basePath('App/functions.php');
 // ↳ Output: /Users/alissa/Desktop/KML/lara_sandbox/demo/functions.php
 
-// include basePath('Database.php');
-// ↳ Output: /Users/alissa/Desktop/KML/lara_sandbox/demo/Database.php
-
 // Autoload w/o Namespaces
 // spl_autoload_register(fn($class) => include basePath("App/{$class}.php"));
 
@@ -32,16 +29,18 @@ spl_autoload_register(function ($class) {
 });
 
 $router = new Router();
+
 $routes = include basePath('routes.php');
-// $router->routes[] = $routes;
-foreach ($routes as $k => $v) {
-    $router->routes[] = [$k => $v];
-}
 $thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
+$methType = $_POST['_METHOD'] ?? $_SERVER['REQUEST_METHOD'];
+// ↳ Use $_POST['_METHOD'] if it exists (and not NULL), otherwise use $_SERVER['REQUEST_METHOD']
 
-$method = $_POST['_METHOD'] ?? $_SERVER['REQUEST_METHOD'];
+// foreach ($routes as $k => $v) {
+//     $router->routes[] = [$k => $v];
+// }
 
-$router->route();
+$router->route($thisURI, $methType);
+// $router->route();
 ?>
 
-<pre><?= formatArr($routes) ?></pre>
+<!-- <pre>formatArr($router->routes)</pre> -->
