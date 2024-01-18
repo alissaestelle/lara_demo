@@ -23,12 +23,12 @@ $viewData = ['page' => $page, 'n' => $n];
 // 3. Validate User
 $n && $n['userID'] === $thisUser ? viewPath($nView, $viewData) : eHandler(403);
 
-if ($reqType === 'POST') {
-    $delStmt = 'DELETE FROM notes WHERE id = :id';
-    $n && $n['userID'] === $thisUser
-        ? $db->query($delStmt, $noteID)->find()
-        : '';
+// if ($reqType === 'POST') {
+//     $delStmt = 'DELETE FROM notes WHERE id = :id';
+//     $n && $n['userID'] === $thisUser
+//         ? $db->query($delStmt, $noteID)->find()
+//         : '';
 
-    header('location: /notes');
-    exit();
-}
+//     header('location: /notes');
+//     exit();
+// }

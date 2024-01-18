@@ -22,6 +22,9 @@ $body = $n['body'] ?? '';
                 <form class="mt-6"
                       method="POST">
                     <input type="hidden"
+                           name="_METHOD"
+                           value="DELETE">
+                    <input type="hidden"
                            name="id"
                            value="<?= $nID ?>">
                     <button class="text-blue-500 hover:underline">↳ Delete</button>
