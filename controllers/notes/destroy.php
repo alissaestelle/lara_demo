@@ -33,5 +33,3 @@ $n && $n['userID'] === $thisUser ? viewPath($nView, $viewData) : eHandler(403);
 //     exit();
 // }
 ?>
-
-<pre><?= formatArr($reqType) ?></pre>
