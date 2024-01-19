@@ -41,16 +41,15 @@ class Database
     function find()
     {
         $results = $this->query->fetch();
-        // return $results ?: eHandler(404);
-        return $results;
+        return $results ?: eHandler(404);
     }
 
     function findAll()
     {
         $results = $this->query->fetchAll();
-        // return $results ?: eHandler(404);
-        return $results;
+        return $results ?: eHandler(404);
     }
-} ?>
+}
+?>
 
 <!-- The query() fx was changed to incorporate query statements into the object itself versus simply returning them. Statements saved as attributes can now be applied to other methods, conditionals, etc. -->

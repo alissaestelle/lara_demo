@@ -40,6 +40,7 @@ $methType = $_POST['_METHOD'] ?? $_SERVER['REQUEST_METHOD'];
 // }
 
 $router->route($thisURI, $methType);
+
 // $router->route();
 ?>
 

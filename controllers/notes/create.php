@@ -31,7 +31,6 @@ if ($reqType === 'POST') {
     $alert =
         Validator::checkStr($postBody, 1, 1000) ?:
         checkPass($postTitle, $postBody, $db, $statement);
-    var_dump($alert);
 }
 
 function toggleColor($x)

@@ -13,15 +13,20 @@ function formatArr($arr)
     return $newArr;
 }
 
-function eHandler($code)
+function eHandler($code = 404)
 {
     http_response_code($code);
     // Add Default View if the Provided Code Doesn't Have One
-    return viewPath("{$code}.php");
+    viewPath("{$code}.php");
+    exit();
 }
 
-function validate()
+function validate($x, $y)
 {
+    if ($x !== $y) {
+        eHandler(403);
+    }
+    return true;
 }
 
 function thisClass($uri)
@@ -31,7 +36,3 @@ function thisClass($uri)
 
     return $_SERVER['REQUEST_URI'] === $uri ? $whiteText : $grayText;
 }
-
-// function basePath($path) {
-//     return BASE_PATH .$path;
-// }
