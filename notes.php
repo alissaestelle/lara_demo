@@ -12,7 +12,6 @@
 
 // "Include" === "Paste"
 
-
 // Class Example
 class Post
 {
@@ -33,10 +32,8 @@ $phpBasics = new Post('Understanding PHP Basics');
 $phpBasics->author = 'Alissa Wiley';
 ?>
 
-<?php 
-
+<?php
 // Namespacing is a way to organize/route class files. If a given folder contains a collection of class files, the namepace for those files would be the name of the folder. If those classes were then used in other parts of the project later, they could be imported with the 'use' keyword (i.e. use <Folder>/<Class>)
-
 ?>
 
 
@@ -62,5 +59,43 @@ $posts = $query->fetchAll(PDO::FETCH_ASSOC);
 // $test = 'SELECT * FROM posts WHERE id = ?';
 // $test = 'SELECT * FROM posts WHERE id = :id';
 // $posts = $db->query($test, ['id' => $userID])->fetch();
+?>
+
+
+<?php
+// Unusable Fx (Saving for the Logic)
+
+function switchViews($uri)
+{
+    switch ($uri) {
+        case '/':
+            include 'controllers/index.php';
+            break;
+        case '/about':
+            include 'controllers/about.php';
+            break;
+        case '/contact':
+            include 'controllers/contact.php';
+            break;
+        default:
+            include 'views/404.php';
+            break;
+    }
+}
+
+function testController($arr, $x)
+{
+    foreach ($arr as $k => $v) {
+        if ($k === $x) {
+            include $v;
+        }
+    }
+}
+
+function liveController($arr, $k)
+{
+    array_key_exists($k, $arr) ? include basePath($arr[$k]) : eHandler(404);
+}
+
 
 ?>

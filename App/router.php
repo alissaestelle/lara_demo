@@ -6,88 +6,48 @@ class Router
 {
     // protected array $routes = [];
     public array $routes = [];
+    public string $check;
+
+    function assign($x, $y, $z)
+    {
+        $this->routes[] = compact('uri', 'controller', 'method');
+    }
+
+    function get($x, $y)
+    {
+        $this->assign($x, $y, 'GET');
+    }
+
+    function post($x, $y)
+    {
+        $this->assign($x, $y, 'POST');
+    }
+
+    function update($x, $y)
+    {
+        $this->assign($x, $y, 'PUT');
+    }
+
+    function delete($x, $y)
+    {
+        $this->assign($x, $y, 'DELETE');
+    }
+
+    function failure($code = 404)
+    {
+        http_response_code($code);
+        return include basePath("views/{$code}.php");
+    }
 
     function route($x, $y)
     {
         foreach ($this->routes as $route) {
             extract($route);
-            $uri === $x && $method === $y ? include basePath($controller) : '';
-            // Needs Logic for Failed Matches
-            
+            // if ($uri === $x && $method === $y) $this->filter($controller);
+            if ($uri === $x && $method === $y) {
+                return include basePath($controller);
+            }
         }
-    }
-
-    function get($x, $y)
-    {
-        $this->routes[] = [
-            'uri' => $x,
-            'controller' => $y,
-            'method' => 'GET'
-        ];
-    }
-
-    function post($x, $y)
-    {
-        $this->routes[] = [
-            'uri' => $x,
-            'controller' => $y,
-            'method' => 'POST'
-        ];
-    }
-
-    function update($x, $y)
-    {
-        $this->routes[] = [
-            'uri' => $x,
-            'controller' => $y,
-            'method' => 'PUT'
-        ];
-    }
-
-    function delete($x, $y)
-    {
-        $this->routes[] = [
-            'uri' => $x,
-            'controller' => $y,
-            'method' => 'DELETE'
-        ];
+        $this->failure();
     }
 }
-
-function switchViews($uri)
-{
-    switch ($uri) {
-        case '/':
-            include 'controllers/index.php';
-            break;
-        case '/about':
-            include 'controllers/about.php';
-            break;
-        case '/contact':
-            include 'controllers/contact.php';
-            break;
-        default:
-            include 'views/404.php';
-            break;
-    }
-}
-
-// switchViews($thisURI);
-
-function testController($arr, $x)
-{
-    foreach ($arr as $k => $v) {
-        if ($k === $x) {
-            include $v;
-        }
-    }
-}
-
-// testController($routes, $thisURI);
-
-function liveController($arr, $k)
-{
-    array_key_exists($k, $arr) ? include basePath($arr[$k]) : eHandler(404);
-}
-
-// liveController($routes, $thisURI);
