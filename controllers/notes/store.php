@@ -1,5 +1,4 @@
 <?php
-// include basePath('Classes/Validator.php');
 
 use App\Database;
 use App\Magic;
@@ -10,10 +9,11 @@ $db = Magic::resolve(Database::class);
 $reqType = $_SERVER['REQUEST_METHOD'];
 $statement =
     'INSERT INTO notes (title, body, userID) VALUES (:title, :body, :userID)';
-$alert = '';
 
 $postTitle = $_POST['title'];
 $postBody = $_POST['body'];
+
+$nView = 'notes/create.view.php';
 
 function checkPass($t, $b, $x, $y)
 {
@@ -25,21 +25,18 @@ function checkPass($t, $b, $x, $y)
     ];
 
     $x->query($y, $config);
-    return 'Success';
+    // return 'Success'
+
+    header('location: /notes');
+    exit();
 }
 
 $alert =
     Validator::checkStr($postBody, 1, 1000) ?:
     checkPass($postTitle, $postBody, $db, $statement);
 
-function toggleColor($x)
-{
-    $greenText = 'text-green-500';
-    $redText = 'text-red-600';
+$viewData = ['page' => 'New Note', 'alert' => $alert];
 
-    return $x === 'Success' ? $greenText : $redText;
-}
+viewPath($nView, $viewData);
 
-header('location: /notes');
-exit();
 ?>

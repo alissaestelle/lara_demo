@@ -11,7 +11,7 @@
 
 $router->get('/', 'controllers/index.php');
 $router->get('/about', 'controllers/about.php');
-$router->get('/notes/create', 'controllers/notes/create.php');
+$router->get('/note/create', 'controllers/notes/create.php');
 $router->get('/notes', 'controllers/notes/index.php');
 $router->get('/note', 'controllers/notes/note.php');
 $router->get('/contact', 'controllers/contact.php');

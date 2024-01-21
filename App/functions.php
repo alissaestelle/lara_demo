@@ -36,3 +36,12 @@ function thisClass($uri)
 
     return $_SERVER['REQUEST_URI'] === $uri ? $whiteText : $grayText;
 }
+
+function toggleColor()
+{
+    // $greenText = 'text-green-500';
+    $redText = 'text-red-600';
+
+    // return $x === 'Success' ? $greenText : $redText;
+    return $redText;
+}

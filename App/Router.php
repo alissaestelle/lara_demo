@@ -54,7 +54,7 @@ class Router
     {
         foreach ($this->routes as $route) {
             extract($route);
-            // if ($xri === $x && $zethod === $y) $this->filter($yontroller);
+            // if ($uri === $x && $method === $y) $this->filter($controller);
             if ($uri === $x && $method === $y) {
                 return include basePath($controller);
             }

@@ -1,10 +1,6 @@
 <?php
 
-$alert = '';
-
-$viewData = ['page' => 'New Note', 'alert' => $alert];
+$viewData = ['page' => 'New Note', 'alert' => ''];
 
 viewPath('notes/create.view.php', $viewData);
 ?>
-
-<pre><?= formatArr($reqType) ?></pre>

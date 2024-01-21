@@ -26,7 +26,7 @@
                 </ul>
                 <?php endif; ?>
                 <p class="mt-6">
-                    <a href="/notes/create"
+                    <a href="/note/create"
                        class="text-blue-500 hover:underline">↳ Create Note</a>
                 </p>
             </div>
