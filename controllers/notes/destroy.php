@@ -1,10 +1,14 @@
 <?php
 
-use App\Database;
 // use App\Validator;
 
-$dbConfig = include basePath('config.php');
-$db = new Database($dbConfig['database'], 'alissa', '');
+use App\Database;
+use App\Magic;
+
+$db = Magic::resolve(Database::class);
+
+// Another Option:
+// $db = Magic::get()->resolve('App\Database');
 
 // $userConfig = ['user' => 1, 'id' => $_GET['id']];
 // $statement = 'SELECT * FROM notes WHERE userID = :user AND id = :id';

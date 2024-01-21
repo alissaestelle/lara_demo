@@ -97,5 +97,4 @@ function liveController($arr, $k)
     array_key_exists($k, $arr) ? include basePath($arr[$k]) : eHandler(404);
 }
 
-
 ?>

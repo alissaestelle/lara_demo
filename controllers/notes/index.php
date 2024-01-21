@@ -1,9 +1,9 @@
 <?php
 
 use App\Database;
+use App\Magic;
 
-$dbConfig = include basePath('config.php');
-$db = new Database($dbConfig['database'], 'alissa', '');
+$db = Magic::resolve(Database::class);
 
 $notes = $db->query('SELECT * FROM notes WHERE userID = 1')->findAll();
 $viewData = ['page' => 'My Notes', 'notes' => $notes];

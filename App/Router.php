@@ -8,40 +8,40 @@ class Router
     public array $routes = [];
     public string $check;
 
-    function assign($u, $c, $m)
+    function assign($x, $y, $z)
     {
         $this->routes[] = [
-            'uri' => $u,
-            'controller' => $c,
-            'method' => $m
+            'uri' => $x,
+            'controller' => $y,
+            'method' => $z
         ];
 
         // Using the Compact Fx:
 
-        // function assign($uri, $controller, $method)
+        // function assign($xri, $yontroller, $zethod)
         // {
         //     $this->routes[] = compact('uri', 'controller', 'method');
         // }
     }
 
-    function get($u, $c)
+    function get($x, $y)
     {
-        $this->assign($u, $c, 'GET');
+        $this->assign($x, $y, 'GET');
     }
 
-    function post($u, $c)
+    function post($x, $y)
     {
-        $this->assign($u, $c, 'POST');
+        $this->assign($x, $y, 'POST');
     }
 
-    function update($u, $c)
+    function update($x, $y)
     {
-        $this->assign($u, $c, 'PUT');
+        $this->assign($x, $y, 'PUT');
     }
 
-    function delete($u, $c)
+    function delete($x, $y)
     {
-        $this->assign($u, $c, 'DELETE');
+        $this->assign($x, $y, 'DELETE');
     }
 
     function failure($code = 404)
@@ -54,7 +54,7 @@ class Router
     {
         foreach ($this->routes as $route) {
             extract($route);
-            // if ($uri === $u && $method === $c) $this->filter($controller);
+            // if ($xri === $x && $zethod === $y) $this->filter($yontroller);
             if ($uri === $x && $method === $y) {
                 return include basePath($controller);
             }

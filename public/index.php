@@ -28,6 +28,8 @@ spl_autoload_register(function ($class) {
     include basePath("{$class}.php");
 });
 
+include basePath('bootstrap.php');
+
 $router = new Router();
 
 $routes = include basePath('routes.php');

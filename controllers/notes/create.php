@@ -1,10 +1,11 @@
 <?php
 // include basePath('Classes/Validator.php');
+
 use App\Database;
+use App\Magic;
 use App\Validator;
 
-$dbConfig = include basePath('config.php');
-$db = new Database($dbConfig['database'], 'alissa', '');
+$db = Magic::resolve(Database::class);
 
 $reqType = $_SERVER['REQUEST_METHOD'];
 $statement =
@@ -44,3 +45,7 @@ function toggleColor($x)
 $viewData = ['page' => 'New Note', 'alert' => $alert];
 
 viewPath('notes/create.view.php', $viewData);
+
+?>
+
+<pre><?= formatArr($reqType) ?></pre>
