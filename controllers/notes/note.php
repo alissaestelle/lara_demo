@@ -11,7 +11,7 @@ $db = Magic::resolve(Database::class);
 $thisUser = 1;
 $noteID = ['id' => $_GET['id']];
 $getStmt = 'SELECT * FROM notes WHERE id = :id';
-$nView = 'notes/n.view.php';
+$nView = 'notes/note.view.php';
 
 // 1. Validate Results
 $n = $db->query($getStmt, $noteID)->find();

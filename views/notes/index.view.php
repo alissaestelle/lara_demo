@@ -18,7 +18,7 @@
                     $body = $n['body'];
                     ?>
                     <li>
-                        <a href="/n?id=<?= $noteID ?>"
+                        <a href="/note?id=<?= $noteID ?>"
                            class="text-blue-500 hover:underline">
                             <?= htmlspecialchars($title) ?></a>
                     </li>
