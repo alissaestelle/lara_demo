@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include basePath('views/partials/header.php'); ?>
-<?php
-$title = $_POST['title'] ?? '';
-$body = $_POST['body'] ?? '';
-?>
 
 <body class="h-full">
     <div class="min-h-full">

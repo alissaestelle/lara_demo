@@ -1,6 +1,27 @@
 <?php
 
-$viewData = ['page' => 'New Note', 'alert' => ''];
+use App\Database;
+use App\Agent;
 
-viewPath('notes/create.view.php', $viewData);
+$db = Agent::resolve(Database::class);
+
+$thisUser = 1;
+$noteID = ['id' => $_GET['id']];
+$getStmt = 'SELECT * FROM notes WHERE id = :id';
+
+// 1. Validate Results
+$n = $db->query($getStmt, $noteID)->find();
+extract($n);
+
+$page = $title ?? 'My Note';
+
+$viewData = ['page' => $page, 'title' => $title ?: '', 'body' => $body ?: '', 'alert' => ''];
+
+// 3. Validate User
+validate($n['userID'], $thisUser);
+
+// $viewData = ['page' => 'Edit Note', 'alert' => ''];
+
+viewPath('notes/edit.view.php', $viewData);
+
 ?>

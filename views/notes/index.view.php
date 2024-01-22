@@ -25,10 +25,15 @@
                     <?php endforeach; ?>
                 </ul>
                 <?php endif; ?>
-                <p class="mt-6">
+                <div class="col-start-2 col-span-1 mt-6 flex items-center gap-x-4">
+                    <button
+                            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><a
+                           href="/note/create">Create Note</a></button>
+                </div>
+                <!-- <p class="mt-6">
                     <a href="/note/create"
                        class="text-blue-500 hover:underline">↳ Create Note</a>
-                </p>
+                </p> -->
             </div>
         </main>
     </div>
