@@ -2,7 +2,7 @@
 
 use App\Container;
 use App\Database;
-use App\Magic;
+use App\Agent;
 
 $dbCtnr = new Container();
 
@@ -11,8 +11,7 @@ $dbCtnr->bind('App\Database', function () {
     return new Database($dbConfig['database'], 'alissa', '');
 });
 
-Magic::set($dbCtnr);
-
+Agent::set($dbCtnr);
 
 // $db = $container->resolve('App\Database');
 

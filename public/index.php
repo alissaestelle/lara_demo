@@ -5,6 +5,10 @@ use App\Router;
 const BASE_PATH = __DIR__ . '/../';
 // ↳ BASE_PATH = /Users/alissa/Desktop/KML/lara_sandbox/demo/
 
+$thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
+$methType = $_POST['_METHOD'] ?? $_SERVER['REQUEST_METHOD'];
+// ↳ Use $_POST['_METHOD'] if it exists (and not NULL), otherwise use $_SERVER['REQUEST_METHOD']
+
 function basePath($path)
 {
     return BASE_PATH . $path;
@@ -31,19 +35,7 @@ spl_autoload_register(function ($class) {
 include basePath('bootstrap.php');
 
 $router = new Router();
-
 $routes = include basePath('routes.php');
-$thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
-$methType = $_POST['_METHOD'] ?? $_SERVER['REQUEST_METHOD'];
-// ↳ Use $_POST['_METHOD'] if it exists (and not NULL), otherwise use $_SERVER['REQUEST_METHOD']
-
-// foreach ($routes as $k => $v) {
-//     $router->routes[] = [$k => $v];
-// }
 
 $router->route($thisURI, $methType);
-
-// $router->route();
 ?>
-
-<!-- <pre>formatArr($router->routes)</pre> -->

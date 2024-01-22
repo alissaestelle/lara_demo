@@ -97,4 +97,10 @@ function liveController($arr, $k)
     array_key_exists($k, $arr) ? include basePath($arr[$k]) : eHandler(404);
 }
 
+// Routes Logic That I Enjoyed:
+
+// foreach ($routes as $k => $v) {
+//     $router->routes[] = [$k => $v];
+// }
+
 ?>

@@ -1,9 +1,9 @@
 <?php
 
 use App\Database;
-use App\Magic;
+use App\Agent;
 
-$db = Magic::resolve(Database::class);
+$db = Agent::resolve(Database::class);
 
 $notes = $db->query('SELECT * FROM notes WHERE userID = 1')->findAll();
 $viewData = ['page' => 'My Notes', 'notes' => $notes];

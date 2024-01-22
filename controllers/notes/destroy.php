@@ -3,12 +3,12 @@
 // use App\Validator;
 
 use App\Database;
-use App\Magic;
+use App\Agent;
 
-$db = Magic::resolve(Database::class);
+$db = Agent::resolve(Database::class);
 
 // Another Option:
-// $db = Magic::get()->resolve('App\Database');
+// $db = Agent::get()->resolve('App\Database');
 
 // $userConfig = ['user' => 1, 'id' => $_GET['id']];
 // $statement = 'SELECT * FROM notes WHERE userID = :user AND id = :id';

@@ -1,10 +1,10 @@
 <?php
 
 use App\Database;
-use App\Magic;
+use App\Agent;
 use App\Validator;
 
-$db = Magic::resolve(Database::class);
+$db = Agent::resolve(Database::class);
 
 $reqType = $_SERVER['REQUEST_METHOD'];
 $statement =
@@ -20,7 +20,6 @@ function checkPass($t, $b, $x, $y)
     $config = [
         'title' => $t,
         'body' => $b,
-        // 'userID' => $_POST['userID']
         'userID' => 1
     ];
 

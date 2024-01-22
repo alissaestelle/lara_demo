@@ -17,7 +17,6 @@ class Router
         ];
 
         // Using the Compact Fx:
-
         // function assign($xri, $yontroller, $zethod)
         // {
         //     $this->routes[] = compact('uri', 'controller', 'method');
@@ -54,7 +53,6 @@ class Router
     {
         foreach ($this->routes as $route) {
             extract($route);
-            // if ($uri === $x && $method === $y) $this->filter($controller);
             if ($uri === $x && $method === $y) {
                 return include basePath($controller);
             }

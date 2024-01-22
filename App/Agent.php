@@ -4,7 +4,7 @@ namespace App;
 
 // Any variables/functions that follow the static keyword are accessible anywhere in the project and don't require instantiation to use.
 
-class Magic
+class Agent
 {
     public static $container;
     // protected static $container;
