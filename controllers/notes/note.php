@@ -10,15 +10,20 @@ $db = Agent::resolve(Database::class);
 
 $thisUser = 1;
 $noteID = ['id' => $_GET['id']];
-$getStmt = 'SELECT * FROM notes WHERE id = :id';
-$nView = 'notes/note.view.php';
+$getStmt = 'SELECT * FROM notes WHERE id = :id';;
 
 // 1. Validate Results
 $n = $db->query($getStmt, $noteID)->find();
+extract($n);
 
-$page = $n['title'] ?? 'My Note';
-$viewData = ['page' => $page, 'n' => $n];
+$page = $title ?? 'My Note';
+$viewData = [
+    'page' => $page,
+    'nID' => $id,
+    'title' => $title,
+    'body' => $body
+];
 
 // 3. Validate User
-validate($n['userID'], $thisUser) && viewPath($nView, $viewData);
+validate($userID, $thisUser) && viewPath('notes/note.view.php', $viewData);
 ?>

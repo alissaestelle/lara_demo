@@ -16,7 +16,6 @@
                                 <p class="mt-1 text-sm leading-6 text-gray-600">
                                     New notes will be added to your notes index.</p>
                             </div>
-
                             <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
                                 <div class="sm:col-span-4">
                                     <label for="title"
@@ -35,7 +34,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-span-full">
                                     <label for="body"
                                            class="block text-sm font-medium leading-6 text-gray-900">Description</label>
@@ -56,9 +54,10 @@
                             </div>
                             <div class="col-start-2 col-span-1 mt-6 flex items-center gap-x-6">
                                 <button type="button"
-                                        class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+                                        class="text-sm font-semibold leading-6 text-gray-900"><a
+                                       href="/notes">Cancel</a></button>
                                 <button type="submit"
-                                        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+                                        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2focus-visible:outline-indigo-600">Save</button>
                             </div>
                         </div>
                     </div>

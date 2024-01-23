@@ -8,7 +8,11 @@
         <?php include basePath('views/partials/banner.php'); ?>
         <main>
             <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-                <form method="POST">
+                <form method="POST"
+                      action="/note/edit">
+                    <input type="hidden"
+                           name="_METHOD"
+                           value="PATCH">
                     <div class="space-y-12">
                         <div class="grid grid-cols-1 gap-x-8 gap-y-4 border-b border-gray-900/10 pb-12 md:grid-cols-3">
                             <div>
@@ -16,7 +20,6 @@
                                 <p class="mt-1 text-sm leading-6 text-gray-600">
                                     Edited content will replace the original note.</p>
                             </div>
-
                             <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
                                 <div class="sm:col-span-4">
                                     <label for="title"
@@ -35,7 +38,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-span-full">
                                     <label for="body"
                                            class="block text-sm font-medium leading-6 text-gray-900">Description</label>

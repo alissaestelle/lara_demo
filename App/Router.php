@@ -33,6 +33,11 @@ class Router
         $this->assign($x, $y, 'POST');
     }
 
+    function patch($x, $y)
+    {
+        $this->assign($x, $y, 'PATCH');
+    }
+
     function update($x, $y)
     {
         $this->assign($x, $y, 'PUT');

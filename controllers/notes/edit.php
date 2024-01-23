@@ -15,7 +15,7 @@ extract($n);
 
 $page = $title ?? 'My Note';
 
-$viewData = ['page' => $page, 'title' => $title ?: '', 'body' => $body ?: '', 'alert' => ''];
+$viewData = ['page' => $page, 'title' => $title, 'body' => $body, 'alert' => ''];
 
 // 3. Validate User
 validate($n['userID'], $thisUser);
