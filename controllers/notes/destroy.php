@@ -14,7 +14,7 @@ $db = Agent::resolve(Database::class);
 // $statement = 'SELECT * FROM notes WHERE userID = :user AND id = :id';
 
 $thisUser = 1;
-$noteID = ['id' => $_POST['id']];
+$noteID = [':id' => $_POST['id']];
 $getStmt = 'SELECT * FROM notes WHERE id = :id';
 $delStmt = 'DELETE FROM notes WHERE id = :id';
 

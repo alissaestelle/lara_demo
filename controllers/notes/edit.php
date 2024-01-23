@@ -6,7 +6,7 @@ use App\Agent;
 $db = Agent::resolve(Database::class);
 
 $thisUser = 1;
-$noteID = ['id' => $_GET['id']];
+$noteID = [':id' => $_GET['id']];
 $getStmt = 'SELECT * FROM notes WHERE id = :id';
 
 // 1. Validate Results
@@ -15,10 +15,10 @@ extract($n);
 
 $page = $title ?? 'My Note';
 
-$viewData = ['page' => $page, 'title' => $title, 'body' => $body, 'alert' => ''];
+$viewData = ['page' => $page, 'noteID' => $id, 'title' => $title, 'body' => $body, 'alert' => ''];
 
 // 3. Validate User
-validate($n['userID'], $thisUser);
+validate($userID, $thisUser);
 
 // $viewData = ['page' => 'Edit Note', 'alert' => ''];
 

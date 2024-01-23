@@ -13,6 +13,9 @@
                     <input type="hidden"
                            name="_METHOD"
                            value="PATCH">
+                    <input type="hidden"
+                           name="id"
+                           value="<?= $noteID ?>">
                     <div class="space-y-12">
                         <div class="grid grid-cols-1 gap-x-8 gap-y-4 border-b border-gray-900/10 pb-12 md:grid-cols-3">
                             <div>
@@ -72,3 +75,6 @@
 </body>
 
 </html>
+
+<pre><?= formatArr($_POST) ?></pre>
+<pre><?= formatArr($_GET) ?></pre>
