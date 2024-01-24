@@ -8,7 +8,8 @@
 // Note: var_dump() accepts all datatypes.
 
 // Superglobals
-// ↳ PHP includes universal variables that can be used in any script/file (i.e. $_SERVER).
+// ↳ PHP includes universal variables that can be used in any script/file.
+// Examples: $_SERVER, $_REQUEST, $_GET, $_POST, $_SESSION, etc.
 
 // "Include" === "Paste"
 

@@ -1,4 +1,6 @@
 <?php
+$_SESSION['name'] = 'Alissa';
+
 $viewData = ['page' => 'Home'];
 
 viewPath('index.view.php', $viewData);

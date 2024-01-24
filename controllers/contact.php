@@ -1,4 +1,6 @@
 <?php
+
+$_SESSION['last'] = 'S';
 $viewData = ['page' => 'Contact'];
 
 viewPath('contact.view.php', $viewData);

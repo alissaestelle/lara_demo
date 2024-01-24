@@ -9,6 +9,8 @@ $thisURI = parse_url($_SERVER['REQUEST_URI'])['path'];
 $methType = $_POST['_METHOD'] ?? $_SERVER['REQUEST_METHOD'];
 // ↳ Use $_POST['_METHOD'] if it exists (and not NULL), otherwise use $_SERVER['REQUEST_METHOD']
 
+session_start();
+
 function basePath($path)
 {
     return BASE_PATH . $path;
