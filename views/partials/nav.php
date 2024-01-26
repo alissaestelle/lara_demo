@@ -11,14 +11,22 @@
                     <div class="ml-10 flex items-baseline space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <a href="/"
-                           class="<?= thisClass('/') ?> hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium"
+                           class="<?= thisClass(
+                               '/'
+                           ) ?> hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium"
                            aria-current="page">Home</a>
                         <a href="/about"
-                           class="<?= thisClass('/about') ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+                           class="<?= thisClass(
+                               '/about'
+                           ) ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
                         <a href="/notes"
-                           class="<?= thisClass('/notes') ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notes</a>
+                           class="<?= thisClass(
+                               '/notes'
+                           ) ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notes</a>
                         <a href="/contact"
-                           class="<?= thisClass('/contact') ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+                           class="<?= thisClass(
+                               '/contact'
+                           ) ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
                     </div>
                 </div>
             </div>
@@ -43,6 +51,7 @@
                     <!-- Profile Dropdown -->
                     <div class="relative ml-3">
                         <div>
+                            <?php if ($user ?? false): ?>
                             <button type="button"
                                     class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                     id="user-menu-button"
@@ -54,6 +63,10 @@
                                      src="https://imgur.com/AIOCKLO.png"
                                      alt="Alissa Wiley" />
                             </button>
+                            <?php else: ?>
+                            <a href="/register"
+                               class="text-white">Register</a>
+                            <?php endif; ?>
                         </div>
 
                         <!-- Dropdown Menu: Show/Hide Based on State -->

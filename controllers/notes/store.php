@@ -10,10 +10,9 @@ $reqType = $_SERVER['REQUEST_METHOD'];
 $postStmt =
     'INSERT INTO notes (title, body, userID) VALUES (:title, :body, :userID)';
 
-$postTitle = $_POST['title'];
-$postBody = $_POST['body'];
+if ($_POST) extract($_POST);
 
-function checkPass($t, $b, $x, $y)
+function createNote($t, $b, $x, $y)
 {
     $config = [
         ':title' => $t,
@@ -29,10 +28,10 @@ function checkPass($t, $b, $x, $y)
 }
 
 $alert =
-    Validator::checkStr($postBody, 1, 1000) ?:
-    checkPass($postTitle, $postBody, $db, $postStmt);
+    Validator::checkNote($body, 1, 1000) ?:
+    createNote($title, $body, $db, $postStmt);
 
-$viewData = ['page' => 'New Note', 'title' => $postTitle, 'body' => $postBody, 'alert' => $alert];
+$viewData = ['page' => 'New Note', 'title' => $title, 'body' => $body, 'alert' => $alert];
 
 viewPath('notes/create.view.php', $viewData);
 

@@ -37,11 +37,11 @@ function thisClass($uri)
     return $_SERVER['REQUEST_URI'] === $uri ? $whiteText : $grayText;
 }
 
-function toggleColor()
+function toggleColor($x)
 {
-    // $greenText = 'text-green-500';
+    $greenText = 'text-green-500';
     $redText = 'text-red-600';
 
-    // return $x === 'Success' ? $greenText : $redText;
-    return $redText;
+    return $x === 'Success' ? $greenText : $redText;
+    // return $redText;
 }

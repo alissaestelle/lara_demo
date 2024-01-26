@@ -75,6 +75,3 @@
 </body>
 
 </html>
-
-<pre><?= formatArr($_POST) ?></pre>
-<pre><?= formatArr($_GET) ?></pre>

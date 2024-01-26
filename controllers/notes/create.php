@@ -1,9 +1,8 @@
 <?php
 
-$postTitle = $_POST['title'] ?? '';
-$postBody = $_POST['body'] ?? '';
+if ($_POST) extract($_POST);
 
-$viewData = ['page' => 'New Note', 'title' => $postTitle, 'body' => $postBody, 'alert' => ''];
+$viewData = ['page' => 'New Note', 'title' => $title ?? '', 'body' => $body ?? '', 'alert' => ''];
 
 viewPath('notes/create.view.php', $viewData);
 

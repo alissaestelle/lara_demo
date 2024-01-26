@@ -17,7 +17,7 @@ class Router
         ];
 
         // Using the Compact Fx:
-        // function assign($xri, $yontroller, $zethod)
+        // function assign($uri, $controller, $method)
         // {
         //     $this->routes[] = compact('uri', 'controller', 'method');
         // }

@@ -10,9 +10,11 @@ $thisUser = 1;
 $getStmt = 'SELECT * FROM notes WHERE id = :id';
 $putStmt = 'UPDATE notes SET title = :title, body = :body WHERE id = :id';
 
-$noteID = $_POST['id'];
-$postTitle = $_POST['title'];
-$postBody = $_POST['body'];
+if ($_POST) extract($_POST);
+
+$noteID = $id;
+$pTitle = $title;
+$pBody = $body;
 
 // Find the Current Note
 $n = $db->query($getStmt, [':id' => $noteID])->find();
@@ -42,10 +44,10 @@ function checkPass($i, $t, $b, $x, $y)
 
 // If Valid, Update the Record
 $alert =
-    Validator::checkStr($postBody, 1, 1000) ?:
-    checkPass($noteID, $postTitle, $postBody, $db, $putStmt);
+    Validator::checkNote($pBody, 1, 1000) ?:
+    checkPass($noteID, $pTitle, $pBody, $db, $putStmt);
 
-$viewData = ['page' => 'Edit Note', 'noteID' => $noteID, 'title' => $postTitle, 'body' => $postBody, 'alert' => $alert];
+$viewData = ['page' => 'Edit Note', 'noteID' => $noteID, 'title' => $pTitle, 'body' => $pBody, 'alert' => $alert];
 
 viewPath('notes/edit.view.php', $viewData);
 

@@ -17,18 +17,27 @@
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form class="space-y-6"
-                  action="#"
+                  action="/register"
                   method="POST">
                 <div>
                     <label for="email"
                            class="block text-sm font-medium leading-6 text-gray-900">Email Address</label>
                     <div class="mt-2">
-                        <input id="email"
+                        <!-- <input id="email"
                                name="email"
                                type="email"
                                autocomplete="email"
                                required
+                               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> -->
+                        <input id="email"
+                               name="email"
+                               autocomplete="email"
+                               value="<?= $email ?>"
                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <?php if ($eMsg): ?>
+                        <p class="<?= toggleColor($eMsg) ?> mt-2">
+                            <?= $eMsg ?></p>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -42,12 +51,22 @@
                         </div>
                     </div>
                     <div class="mt-2">
-                        <input id="password"
+                        <!-- <input id="password"
                                name="password"
                                type="password"
                                autocomplete="current-password"
                                required
+                               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> -->
+                        <input id="password"
+                               name="password"
+                               type="password"
+                               autocomplete="current-password"
+                               value="<?= $password ?>"
                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <?php if ($pMsg): ?>
+                        <p class="<?= toggleColor($pMsg) ?> mt-2">
+                            <?= $pMsg ?></p>
+                        <?php endif; ?>
                     </div>
                 </div>
 

@@ -7,10 +7,10 @@ $db = Agent::resolve(Database::class);
 
 $thisUser = 1;
 $noteID = [':id' => $_GET['id']];
-$getStmt = 'SELECT * FROM notes WHERE id = :id';
+$getNote = 'SELECT * FROM notes WHERE id = :id';
 
 // 1. Validate Results
-$n = $db->query($getStmt, $noteID)->find();
+$n = $db->query($getNote, $noteID)->find();
 extract($n);
 
 $page = $title ?? 'My Note';
