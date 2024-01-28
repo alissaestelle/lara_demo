@@ -18,17 +18,10 @@ class Validator
     static function verifyUser($x)
     {
         $x = filter_var($x, FILTER_VALIDATE_EMAIL);
-
         $message = !$x ? 'Invalid Email Address' : false;
-        // var_dump($xErr);
 
         return $message;
-
-        // if (!$x) {
-        //     $message = 'Invalid Email Address';
-        //     return $message;
-        // }
-    }
+    } 
 
     static function verifyCreds($y)
     {

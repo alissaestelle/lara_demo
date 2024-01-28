@@ -15,9 +15,6 @@ $eMsg = Validator::verifyUser($email);
 $pMsg = Validator::verifyCreds($password);
 
 // Check if User Exists
-// If Yes, Redirect to Login
-// If No, Create User
-
 function createUser($x, $y, $z)
 {
     $getUser = 'SELECT * FROM users WHERE email = :email';
@@ -31,8 +28,6 @@ function createUser($x, $y, $z)
         ->find();
 
     if ($user) {
-        var_dump($user);
-
         $_SESSION['user'] = [
             'email' => $y
         ];
@@ -49,11 +44,12 @@ function createUser($x, $y, $z)
 
     $x->query($saveUser, $config);
 
-    // $_SESSION['user'] = [
-    //     'email' => $y
-    // ];
+    $_SESSION['user'] = [
+        'email' => $y
+    ];
 
-    header('location: /');
+    viewPath('index.view.php', ['user' => $_SESSION['user']]);
+    // header('location: /');
     exit();
 }
 

@@ -14,7 +14,7 @@ $getStmt = 'SELECT * FROM notes WHERE id = :id';;
 
 // 1. Validate Results
 $n = $db->query($getStmt, $noteID)->find();
-extract($n);
+$n ? extract($n) : eHandler(404);
 
 $page = $title ?? 'My Note';
 $viewData = [
