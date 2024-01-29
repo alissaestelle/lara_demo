@@ -5,9 +5,8 @@ use App\Validator;
 
 $db = Agent::resolve(Database::class);
 
-if ($_POST) {
-    extract($_POST);
-}
+if ($_POST) extract($_POST);
+if ($_SESSION) extract($_SESSION);
 
 // Validate Form Input
 $eMsg = Validator::verifyUser($email);
@@ -61,6 +60,7 @@ function createUser($x, $y, $z)
 $eMsg ?: $pMsg ?: createUser($db, $email, $password);
 
 $viewData = [
+    'user' => $user ??= false,
     'email' => $email ?? '',
     'password' => $password ?? '',
     'eMsg' => $eMsg ?: '',

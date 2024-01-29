@@ -1,6 +1,9 @@
 <?php
 
 namespace App;
+use App\Middleware\Auth;
+use App\Middleware\Guest;
+use App\Middleware\Index;
 
 class Router
 {
@@ -67,25 +70,21 @@ class Router
 
     function route($x, $y)
     {
-        if ($_SESSION) extract($_SESSION);
-        // if ($user ?? false) var_dump($user);
+        (new Auth);
+        (new Guest);
 
         foreach ($this->routes as $route) {
             extract($route);
-            if ($uri === $x && $method === $y) {
-                if ($middleware === 'Guest') {
-                    if ($user ?? false) {
-                        return include basePath($controller);
-                    }
-                }
 
-                if ($middleware === 'Auth') {
-                    if (!$user) {
-                        header('location: /register');
-                        exit();
-                    }
-                    return include basePath($controller);
-                }
+            if ($uri === $x && $method === $y) {
+                // $index = Index::MAP[$middleware];
+
+                // if ($index) {
+                    // (new $index)->handle();
+                    // ↳ This syntax is equal to (new Auth) or (new Guest)
+                // }
+
+                Index::resolve($middleware);
 
                 return include basePath($controller);
             }
