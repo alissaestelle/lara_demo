@@ -13,8 +13,11 @@ class Router
         $this->routes[] = [
             'uri' => $x,
             'controller' => $y,
-            'method' => $z
+            'method' => $z,
+            'middleware' => NULL
         ];
+
+        return $this;
 
         // Using the Compact Fx:
         // function assign($uri, $controller, $method)
@@ -25,27 +28,35 @@ class Router
 
     function get($x, $y)
     {
-        $this->assign($x, $y, 'GET');
+        return $this->assign($x, $y, 'GET');
     }
 
     function post($x, $y)
     {
-        $this->assign($x, $y, 'POST');
+        return $this->assign($x, $y, 'POST');
     }
 
     function patch($x, $y)
     {
-        $this->assign($x, $y, 'PATCH');
+        return $this->assign($x, $y, 'PATCH');
     }
 
     function update($x, $y)
     {
-        $this->assign($x, $y, 'PUT');
+        return $this->assign($x, $y, 'PUT');
     }
 
     function delete($x, $y)
     {
-        $this->assign($x, $y, 'DELETE');
+        return $this->assign($x, $y, 'DELETE');
+    }
+
+    function filter($key)
+    {
+        $end = count($this->routes) - 1;
+        $keys = array_keys($this->routes[$end]);
+        $this->routes[$end][$keys[3]] = $key;
+        return $this;
     }
 
     function failure($code = 404)
@@ -56,12 +67,31 @@ class Router
 
     function route($x, $y)
     {
+        if ($_SESSION) extract($_SESSION);
+        // if ($user ?? false) var_dump($user);
+
         foreach ($this->routes as $route) {
             extract($route);
             if ($uri === $x && $method === $y) {
+                if ($middleware === 'Guest') {
+                    if ($user ?? false) {
+                        return include basePath($controller);
+                    }
+                }
+
+                if ($middleware === 'Auth') {
+                    if (!$user) {
+                        header('location: /register');
+                        exit();
+                    }
+                    return include basePath($controller);
+                }
+
                 return include basePath($controller);
             }
         }
         $this->failure();
     }
 }
+
+?>

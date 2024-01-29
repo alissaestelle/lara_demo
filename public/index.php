@@ -11,6 +11,7 @@ $methType = $_POST['_METHOD'] ?? $_SERVER['REQUEST_METHOD'];
 
 session_start();
 
+
 function basePath($path)
 {
     return BASE_PATH . $path;
@@ -24,6 +25,8 @@ function viewPath($path, $attr = [])
 
 include basePath('App/functions.php');
 // ↳ Output: /Users/alissa/Desktop/KML/lara_sandbox/demo/functions.php
+
+$_SESSION ?? formatArr($_SESSION);
 
 // Autoload w/o Namespaces
 // spl_autoload_register(fn($class) => include basePath("App/{$class}.php"));

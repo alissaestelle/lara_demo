@@ -9,8 +9,14 @@ function consoleLog($msg)
 
 function formatArr($arr)
 {
-    $newArr = var_dump($arr);
-    return $newArr;
+    // $newArr = var_dump($arr);
+    // return $newArr;
+    
+    foreach ($arr as $a) {
+        echo '<pre>';
+        var_dump($a);
+        echo '</pre>';
+    }
 }
 
 function eHandler($code = 404)

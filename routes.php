@@ -4,10 +4,10 @@ $router->get('/', 'controllers/index.php');
 $router->get('/about', 'controllers/about.php');
 $router->get('/contact', 'controllers/contact.php');
 
-$router->get('/register', 'controllers/registration/create.php');
+$router->get('/register', 'controllers/registration/create.php')->filter('Guest');
 $router->post('/register', 'controllers/registration/store.php');
 
-$router->get('/notes', 'controllers/notes/index.php');
+$router->get('/notes', 'controllers/notes/index.php')->filter('Auth');
 $router->get('/note', 'controllers/notes/note.php');
 $router->delete('/note', 'controllers/notes/destroy.php');
 

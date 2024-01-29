@@ -5,6 +5,8 @@ use App\Agent;
 
 $db = Agent::resolve(Database::class);
 
+if ($_SESSION) extract($_SESSION);
+
 // $userConfig = ['user' => 1, 'id' => $_GET['id']];
 // $statement = 'SELECT * FROM notes WHERE userID = :user AND id = :id';
 
@@ -18,6 +20,7 @@ $n ? extract($n) : eHandler(404);
 
 $page = $title ?? 'My Note';
 $viewData = [
+    'user' => $user ??= false,
     'page' => $page,
     'nID' => $id,
     'title' => $title,

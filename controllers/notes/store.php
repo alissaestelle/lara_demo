@@ -11,6 +11,7 @@ $postStmt =
     'INSERT INTO notes (title, body, userID) VALUES (:title, :body, :userID)';
 
 if ($_POST) extract($_POST);
+if ($_SESSION) extract($_SESSION);
 
 function createNote($t, $b, $x, $y)
 {
@@ -31,7 +32,13 @@ $alert =
     Validator::checkNote($body, 1, 1000) ?:
     createNote($title, $body, $db, $postStmt);
 
-$viewData = ['page' => 'New Note', 'title' => $title, 'body' => $body, 'alert' => $alert];
+$viewData = [
+    'user' => $user ??= false,
+    'page' => 'New Note',
+    'title' => $title,
+    'body' => $body,
+    'alert' => $alert
+];
 
 viewPath('notes/create.view.php', $viewData);
 

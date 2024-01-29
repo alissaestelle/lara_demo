@@ -104,4 +104,8 @@ function liveController($arr, $k)
 //     $router->routes[] = [$k => $v];
 // }
 
+// Session Syntax
+// ↳ echo $TMPDIR
+
+
 ?>

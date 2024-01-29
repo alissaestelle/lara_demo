@@ -1,4 +1,3 @@
-<!-- <pre><?= formatArr($_POST) ?></pre> -->
 <?php
 use App\Agent;
 use App\Database;
@@ -19,7 +18,7 @@ function createUser($x, $y, $z)
 {
     $getUser = 'SELECT * FROM users WHERE email = :email';
     $saveUser =
-        'INSERT INTO users (email, password) VALUES (:email, :password)';
+        'INSERT INTO users (name, email, password) VALUES (:name, :email, :password)';
 
     $user = $x
         ->query($getUser, [
@@ -28,29 +27,35 @@ function createUser($x, $y, $z)
         ->find();
 
     if ($user) {
+        extract($user);
+        $first = explode(' ', $name);
+
         $_SESSION['user'] = [
+            'name' => $first[0],
             'email' => $y
         ];
 
-        viewPath('index.view.php', ['user' => $_SESSION['user']]);
-        // header('location: /');
+        header('location: /');
         exit();
     }
 
-    $config = [
-        ':email' => $y,
-        ':password' => $z
-    ];
+    if (!$user) {
+        $config = [
+            ':name' => 'Jane Doe',
+            ':email' => $y,
+            ':password' => $z
+        ];
 
-    $x->query($saveUser, $config);
+        $x->query($saveUser, $config);
 
-    $_SESSION['user'] = [
-        'email' => $y
-    ];
+        $_SESSION['user'] = [
+            'name' => 'Jane Doe',
+            'email' => $y
+        ];
 
-    viewPath('index.view.php', ['user' => $_SESSION['user']]);
-    // header('location: /');
-    exit();
+        header('location: /');
+        exit();
+    }
 }
 
 $eMsg ?: $pMsg ?: createUser($db, $email, $password);
