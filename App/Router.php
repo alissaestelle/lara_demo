@@ -83,8 +83,8 @@ class Router
                     // (new $index)->handle();
                     // ↳ This syntax is equal to (new Auth) or (new Guest)
                 // }
-
-                Index::resolve($middleware);
+                
+                $middleware && Index::resolve($middleware);
 
                 return include basePath($controller);
             }

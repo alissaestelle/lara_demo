@@ -42,7 +42,7 @@ function createUser($x, $y, $z)
         $config = [
             ':name' => 'Jane Doe',
             ':email' => $y,
-            ':password' => $z
+            ':password' => password_hash($z, PASSWORD_BCRYPT)
         ];
 
         $x->query($saveUser, $config);
