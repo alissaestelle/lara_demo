@@ -48,7 +48,6 @@ class Database
     function findAll()
     {
         $results = $this->query->fetchAll();
-        var_dump($results);
         // return $results ?: eHandler(404);
         return $results;
     }
