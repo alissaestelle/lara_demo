@@ -65,7 +65,13 @@
                             </button>
                             <?php else: ?>
                             <a href="/register"
-                               class="text-white">Register</a>
+                               class="<?= thisClass(
+                               '/register'
+                           ) ?> hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium">Register</a>
+                            <a href="/login"
+                               class="<?= thisClass(
+                               '/login'
+                           ) ?> hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium">Log In</a>
                             <?php endif; ?>
                         </div>
 

@@ -29,11 +29,7 @@ function createUser($x, $y, $z)
         extract($user);
         $first = explode(' ', $name);
 
-        $_SESSION['user'] = [
-            'name' => $first[0],
-            'email' => $y
-        ];
-
+        login($first[0], $y);
         header('location: /');
         exit();
     }
@@ -47,11 +43,7 @@ function createUser($x, $y, $z)
 
         $x->query($saveUser, $config);
 
-        $_SESSION['user'] = [
-            'name' => 'Jane Doe',
-            'email' => $y
-        ];
-
+        login('Jane Doe', $y);
         header('location: /');
         exit();
     }

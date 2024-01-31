@@ -11,7 +11,7 @@ function formatArr($arr)
 {
     // $newArr = var_dump($arr);
     // return $newArr;
-    
+
     foreach ($arr as $a) {
         echo '<pre>';
         var_dump($a);
@@ -25,6 +25,14 @@ function eHandler($code = 404)
     // Add Default View if the Provided Code Doesn't Have One
     viewPath("{$code}.php");
     exit();
+}
+
+function login($x, $y)
+{
+    $_SESSION['user'] = [
+        'name' => $x,
+        'email' => $y
+    ];
 }
 
 function validate($x, $y)
