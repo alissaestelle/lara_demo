@@ -1,15 +1,12 @@
 <?php
 
-if ($_POST) extract($_POST);
-if ($_SESSION) extract($_SESSION);
-
 $viewData = [
     'user' => $user ??= false,
-    'email' => $email ?? '',
-    'password' => $password ?? '',
-    'eMsg' => $eMsg ?? '',
-    'pMsg' => $pMsg ?? '',
-
+    'email' => $email ??= false,
+    'password' => $password ??= false,
+    'eMsg' => $eMsg ??= false,
+    'pMsg' => $pMsg ??= false,
+    'logMsg' => $logMsg ??= false,
 ];
 
 viewPath('sessions/create.view.php', $viewData);

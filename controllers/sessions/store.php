@@ -5,24 +5,46 @@ use App\Database;
 use App\Validator;
 
 $db = Agent::resolve(Database::class);
-
-if ($_POST) {
-    extract($_POST);
-}
-
-$eMsg = Validator::verifyUser($email);
-$pMsg = Validator::verifyCreds($password);
+extract($_POST);
+$formPass = $password;
 
 $getUser = 'SELECT * FROM users WHERE email = :email';
-
 $thisUser = $db->query($getUser, [':email' => $email])->find();
-
-var_dump($thisUser);
 // Returns False if No Record is Found
 
-// $eMsg ?: $pMsg ?: login();
+$eMsg = Validator::verifyAcct($email);
+$pMsg = Validator::verifyCreds($password);
 
-// viewPath('sessions/create.view.php', $viewData);
+function verifyUser($user, $pw)
+{
+    extract($user);
+    $hashPass = $password;
+
+    $passCheck = password_verify($pw, $hashPass) ? true : false;
+    var_dump($passCheck);
+
+    if ($passCheck) {
+        login($name, $email);
+        header('location: /notes');
+        exit();
+    }
+
+    return 'Incorrect Password';
+}
+
+
+$logMsg = $thisUser ? verifyUser($thisUser, $password) : 'No Account Found';
+
+$viewData = [
+    'user' => ($user ??= false),
+    'email' => ($email ??= false),
+    'password' => ($password ??= false),
+    'eMsg' => !$thisUser ? $eMsg : false,
+    'pMsg' => !$thisUser ? $pMsg : false,
+    'logMsg' => $eMsg || $pMsg ? false : $logMsg
+];
+
+viewPath('sessions/create.view.php', $viewData);
 
 // Validate the User && Log In
 

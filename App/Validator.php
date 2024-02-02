@@ -15,7 +15,7 @@ class Validator
         return $message;
     }
 
-    static function verifyUser($x)
+    static function verifyAcct($x)
     {
         $x = filter_var($x, FILTER_VALIDATE_EMAIL);
         $message = !$x ? 'Invalid Email Address' : false;
