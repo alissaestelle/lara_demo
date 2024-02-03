@@ -50,21 +50,34 @@
 
                     <!-- Profile Dropdown -->
                     <div class="relative ml-3">
-                        <div>
+                        <div class="flex items-center space-x-2">
                             <?php if ($user ?? false): ?>
                             <button type="button"
                                     class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                     id="user-menu-button"
                                     aria-expanded="false"
-                                    aria-haspopup="true">
+                                    aria-haspopup="true"
+                                    popovertarget="user-modal">
                                 <span class="absolute -inset-1.5"></span>
                                 <span class="sr-only">Open User Menu</span>
                                 <img class="h-8 w-8 rounded-full"
                                      src="https://imgur.com/AIOCKLO.png"
                                      alt="Alissa Wiley" />
                             </button>
+                            <form method="POST"
+                                  action="/logout">
+                                <input type="hidden"
+                                       name="_METHOD"
+                                       value="DELETE" />
+                                <button class="<?= thisClass(
+                               '/logout'
+                           ) ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Log
+                                    Out</button>
+                            </form>
+
                             <?php else: ?>
-                            <a href="/register"
+                            <a href="
+                                        /register"
                                class="<?= thisClass(
                                '/register'
                            ) ?> hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium">Register</a>
@@ -84,24 +97,26 @@
                         From: "transform opacity-100 scale-100"
                         To: "transform opacity-0 scale-95" -->
 
-                        <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        <div popover
+                             id="user-modal"
+                             class="absolute right-0 z-10 mt-20 mr-4 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-zinc-300 focus:outline-none"
                              role="menu"
                              aria-orientation="vertical"
                              aria-labelledby="user-menu-button"
                              tabindex="-1">
                             <!-- Active: "bg-gray-100", Not Active: "" -->
-                            <a href="#"
-                               class="block px-4 py-2 text-sm text-gray-700"
+                            <a href="/notes"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem"
                                tabindex="-1"
                                id="user-menu-item-0">Your Profile</a>
                             <a href="#"
-                               class="block px-4 py-2 text-sm text-gray-700"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem"
                                tabindex="-1"
                                id="user-menu-item-1">Settings</a>
-                            <a href="#"
-                               class="block px-4 py-2 text-sm text-gray-700"
+                            <a href="/logout"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem"
                                tabindex="-1"
                                id="user-menu-item-2">Sign Out</a>

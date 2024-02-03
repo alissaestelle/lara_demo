@@ -9,6 +9,7 @@ $router->post('/register', 'controllers/registration/store.php');
 
 $router->get('/login', 'controllers/sessions/create.php')->filter('Guest');
 $router->post('/login', 'controllers/sessions/store.php')->filter('Guest');
+$router->delete('/logout', 'controllers/sessions/destroy.php')->filter('Auth');
 
 $router->get('/notes', 'controllers/notes/index.php')->filter('Auth');
 $router->get('/note', 'controllers/notes/note.php');

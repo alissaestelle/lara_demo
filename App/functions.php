@@ -33,6 +33,19 @@ function login($x, $y)
         'firstName' => $x,
         'email' => $y
     ];
+
+    session_regenerate_id(true);
+}
+
+function logout()
+{
+    $_SESSION = [];
+
+    $params = session_get_cookie_params();
+    extract($params);
+    session_destroy();
+
+    setcookie('PHPSESSID', '', time() - 3600, $path, $domain);
 }
 
 function validate($x, $y)
