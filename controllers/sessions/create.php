@@ -1,7 +1,6 @@
 <?php
 
 $viewData = [
-    'user' => $user ??= false,
     'email' => $email ??= false,
     'password' => $password ??= false,
     'eMsg' => $eMsg ??= false,

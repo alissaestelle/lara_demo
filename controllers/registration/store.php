@@ -13,13 +13,13 @@ $eMsg = Validator::verifyAcct($email);
 $pMsg = Validator::verifyCreds($password);
 
 // Check if User Exists
-function createUser($w, $x, $y, $z)
+function createUser($v, $w, $x, $y, $z)
 {
     $getUser = 'SELECT * FROM users WHERE email = :email';
     $saveUser =
-        'INSERT INTO users (name, email, password) VALUES (:name, :email, :password)';
+        'INSERT INTO users (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)';
 
-    $user = $w
+    $user = $v
         ->query($getUser, [
             ':email' => $y
         ])
@@ -27,40 +27,40 @@ function createUser($w, $x, $y, $z)
 
     if ($user) {
         extract($user);
-        $first = explode(' ', $name);
+        // $first = explode(' ', $name);
 
-        login($first[0], $y);
+        login($firstName, $email);
         header('location: /');
         exit();
     }
 
     if (!$user) {
         $config = [
-            ':name' => $x,
+            ':firstName' => $w,
+            ':lastName' => $x,
             ':email' => $y,
             ':password' => password_hash($z, PASSWORD_BCRYPT)
         ];
 
-        $w->query($saveUser, $config);
+        $v->query($saveUser, $config);
 
-        login($x, $y);
+        login($w, $y);
         header('location: /');
         exit();
     }
 }
 
-$eMsg ?: $pMsg ?: createUser($db, $name, $email, $password);
+$eMsg ?: $pMsg ?: createUser($db, $firstName, $lastName, $email, $password);
 
 $viewData = [
-    'user' => $user ??= false,
-    'name' => $name ??= false,
-    'email' => $email ??= false,
-    'password' => $password ??= false,
+    'firstName' => ($firstName ??= false),
+    'lastName' => ($lastName ??= false),
+    'email' => ($email ??= false),
+    'password' => ($password ??= false),
     'eMsg' => $eMsg ?: false,
     'pMsg' => $pMsg ?: false
 ];
 
 viewPath('registration/create.view.php', $viewData);
-
 
 ?>

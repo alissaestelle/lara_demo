@@ -1,11 +1,8 @@
 <?php
 
-if ($_POST) extract($_POST);
-if ($_SESSION) extract($_SESSION);
-
 $viewData = [
-    'user' => $user ??= false,
-    'name' => $name ??= false,
+    'firstName' => $firstName ??= false,
+    'lastName' => $lastName ??= false,
     'email' => $email ??= false,
     'password' => $password ??= false,
     'eMsg' => $eMsg ??= false,

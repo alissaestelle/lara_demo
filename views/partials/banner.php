@@ -10,10 +10,8 @@ $email = [':email' => $email ?? false];
 $thisUser = $db->query("SELECT * FROM users WHERE email = :email", $email)->find();
 
 $thisUser && extract($thisUser);
-$name ??= false;
-
-$first = $name ? explode(' ', $name) : false;
-$name = $first[0] ?? 'Guest';
+$firstName ??= false;
+$name = $firstName ?: 'Guest';
 ?>
 
 <header class="bg-white shadow">

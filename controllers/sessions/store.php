@@ -5,6 +5,8 @@ use App\Database;
 use App\Validator;
 
 $db = Agent::resolve(Database::class);
+
+var_dump($_POST);
 extract($_POST);
 $formPass = $password;
 
@@ -36,7 +38,6 @@ function verifyUser($user, $pw)
 $logMsg = $thisUser ? verifyUser($thisUser, $password) : 'No Account Found';
 
 $viewData = [
-    'user' => ($user ??= false),
     'email' => ($email ??= false),
     'password' => ($password ??= false),
     'eMsg' => !$thisUser ? $eMsg : false,

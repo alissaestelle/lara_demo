@@ -30,7 +30,7 @@ function eHandler($code = 404)
 function login($x, $y)
 {
     $_SESSION['user'] = [
-        'name' => $x,
+        'firstName' => $x,
         'email' => $y
     ];
 }
