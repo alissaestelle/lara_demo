@@ -32,6 +32,9 @@ $_SESSION ?? formatArr($_SESSION);
 // spl_autoload_register(fn($class) => include basePath("App/{$class}.php"));
 
 // Autoload w/ Namespaces
+// It's important to note that namespaces create virtual directories, so if a file declares its parent folder as a namespace, the name of the parent folder is then automatically prepended to the given file.
+// Ex: <File>.php contains a <File> class and is located inside <Folder>. <File>.php declares <Folder> as its namespace, so when the <File> class is passed as an argument to spl_autoload_register(), it's actually passing the full namespaced path: <Folder>/<File>.
+
 spl_autoload_register(function ($class) {
     $class = str_replace('\\', '/', $class);
     include basePath("{$class}.php");

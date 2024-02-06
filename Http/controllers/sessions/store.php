@@ -3,19 +3,35 @@
 use App\Agent;
 use App\Database;
 use App\Validator;
+use Http\Forms\Login;
 
 $db = Agent::resolve(Database::class);
 
-var_dump($_POST);
 extract($_POST);
-$formPass = $password;
 
 $getUser = 'SELECT * FROM users WHERE email = :email';
 $thisUser = $db->query($getUser, [':email' => $email])->find();
 // Returns False if No Record is Found
 
-$eMsg = Validator::verifyAcct($email);
-$pMsg = Validator::verifyCreds($password);
+// $eMsg = Validator::verifyAcct($email);
+// $pMsg = Validator::verifyCreds($password);
+
+$eMsg = false;
+$pMsg = false;
+
+$form = new Login();
+$validation = $form->validate($email, $password);
+
+if (!$validation) {
+    global $eMsg, $pMsg;
+    $errs = $form->getErrors();
+
+    $assignErr = fn($e) => $e === 'email' || 'password';
+    $eMsg = array_filter($errs, $assignErr);
+
+    // Keys Need to Be Looped
+    var_dump($eMsg);
+}
 
 function verifyUser($user, $pw)
 {

@@ -1,22 +1,22 @@
 <?php
 
-$router->get('/', 'controllers/index.php');
-$router->get('/about', 'controllers/about.php');
-$router->get('/contact', 'controllers/contact.php');
+$router->get('/', 'index.php');
+$router->get('/about', 'about.php');
+$router->get('/contact', 'contact.php');
 
-$router->get('/register', 'controllers/registration/create.php')->filter('Guest');
-$router->post('/register', 'controllers/registration/store.php');
+$router->get('/register', 'registration/create.php')->filter('Guest');
+$router->post('/register', 'registration/store.php');
 
-$router->get('/login', 'controllers/sessions/create.php')->filter('Guest');
-$router->post('/login', 'controllers/sessions/store.php')->filter('Guest');
-$router->delete('/logout', 'controllers/sessions/destroy.php')->filter('Auth');
+$router->get('/login', 'sessions/create.php')->filter('Guest');
+$router->post('/login', 'sessions/store.php')->filter('Guest');
+$router->delete('/logout', 'sessions/destroy.php')->filter('Auth');
 
-$router->get('/notes', 'controllers/notes/index.php')->filter('Auth');
-$router->get('/note', 'controllers/notes/note.php');
-$router->delete('/note', 'controllers/notes/destroy.php');
+$router->get('/notes', 'notes/index.php')->filter('Auth');
+$router->get('/note', 'notes/note.php');
+$router->delete('/note', 'notes/destroy.php');
 
-$router->get('/note/create', 'controllers/notes/create.php');
-$router->post('/note/create', 'controllers/notes/store.php');
+$router->get('/note/create', 'notes/create.php');
+$router->post('/note/create', 'notes/store.php');
 
-$router->get('/note/edit', 'controllers/notes/edit.php');
-$router->patch('/note/edit', 'controllers/notes/update.php');
+$router->get('/note/edit', 'notes/edit.php');
+$router->patch('/note/edit', 'notes/update.php');

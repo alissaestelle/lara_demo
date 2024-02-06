@@ -86,7 +86,7 @@ class Router
                 
                 $middleware && Index::resolve($middleware);
 
-                return include basePath($controller);
+                return include basePath("Http/controllers/{$controller}");
             }
         }
         $this->failure();
