@@ -31,6 +31,8 @@ if (!$validation) {
 
     // Keys Need to Be Looped
     var_dump($eMsg);
+
+    // https://medium.com/@albertcolom/how-to-use-arrow-function-in-php-c28490ff7fb7
 }
 
 function verifyUser($user, $pw)
