@@ -3,9 +3,7 @@
 $viewData = [
     'email' => $email ??= false,
     'password' => $password ??= false,
-    'eMsg' => $eMsg ??= false,
-    'pMsg' => $pMsg ??= false,
-    'logMsg' => $logMsg ??= false,
+    'errors' => $errs ??= false
 ];
 
 viewPath('sessions/create.view.php', $viewData);

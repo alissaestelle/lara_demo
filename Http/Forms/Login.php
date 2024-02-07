@@ -20,6 +20,10 @@ class Login
         return empty($this->errors);
     }
 
+    function setError($auth) {
+        $this->errors[] = compact('auth');
+    }
+
     function getErrors() {
         return $this->errors;
     }

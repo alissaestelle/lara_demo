@@ -64,6 +64,17 @@ function thisClass($uri)
     return $_SERVER['REQUEST_URI'] === $uri ? $whiteText : $grayText;
 }
 
+function filterErr($arr, $x)
+{
+    foreach ($arr as $a) {
+        foreach ($a as $k => $v) {
+            if ($k === $x) {
+                return $v;
+            }
+        }
+    }
+}
+
 function toggleColor()
 {
     // $greenText = 'text-green-500';
