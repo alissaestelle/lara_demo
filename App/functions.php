@@ -19,22 +19,9 @@ function formatArr($arr)
     }
 }
 
-function eHandler($code = 404)
-{
-    http_response_code($code);
-    // Add Default View if the Provided Code Doesn't Have One
-    viewPath("{$code}.php");
+function redirect($path) {
+    header("location: {$path}");
     exit();
-}
-
-function login($x, $y)
-{
-    $_SESSION['user'] = [
-        'firstName' => $x,
-        'email' => $y
-    ];
-
-    session_regenerate_id(true);
 }
 
 function logout()
@@ -46,6 +33,14 @@ function logout()
     session_destroy();
 
     setcookie('PHPSESSID', '', time() - 3600, $path, $domain);
+}
+
+function eHandler($code = 404)
+{
+    http_response_code($code);
+    // Add Default View if the Provided Code Doesn't Have One
+    viewPath("{$code}.php");
+    exit();
 }
 
 function validate($x, $y)

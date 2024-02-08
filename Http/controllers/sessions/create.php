@@ -3,7 +3,7 @@
 $viewData = [
     'email' => $email ??= false,
     'password' => $password ??= false,
-    'errors' => $errs ??= false
+    'errors' => $errs ??= []
 ];
 
 viewPath('sessions/create.view.php', $viewData);

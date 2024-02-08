@@ -1,21 +1,15 @@
 <?php
 
-use App\Agent;
-use App\Database;
+use App\Authenticator;
 use Http\Forms\Login;
-
-$db = Agent::resolve(Database::class);
 
 extract($_POST);
 
-$getUser = 'SELECT * FROM users WHERE email = :email';
-$thisUser = $db->query($getUser, [':email' => $email])->find();
-// Returns False if No Record is Found
-
-
+// Validate User Input:
 $form = new Login();
 $validation = $form->validate($email, $password);
 
+// Validation Fails → Return to Login Page:
 if (!$validation) {
     $viewData = [
         'email' => $email,
@@ -28,25 +22,17 @@ if (!$validation) {
     // https://medium.com/@albertcolom/how-to-use-arrow-function-in-php-c28490ff7fb7
 }
 
-function verifyUser($user, $pw, $class)
-{
-    extract($user);
-    $hashPass = $password;
+// Validation Passes → Authenticate User:
+$auth = new Authenticator();
+$status = $auth->attempt($email, $password);
 
-    $passCheck = password_verify($pw, $hashPass) ? true : false;
+// If Error Found → Generate Error:
+$error = $status ?: false;
 
-    if ($passCheck) {
-        login($name, $email);
-        header('location: /notes');
-        exit();
-    }
+// Authentication Fails ? Return Error : Redirect to User Dashboard
+$error ? $form->setError($status) : redirect('/');
 
-    $class->setError('Incorrect Password');
-}
-
-$thisUser
-    ? verifyUser($thisUser, $password, $form)
-    : $form->setError('No Account Found');
+// $_SESSION['_log']['errors'] = $form->getErrors();
 
 $viewData = [
     'email' => $email,
