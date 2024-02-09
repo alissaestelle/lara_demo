@@ -10,8 +10,8 @@ class Authenticator
     function login($x)
     {
         extract($x);
-        
-        $_SESSION['user'] = [
+
+        $_SESSION['_USER'] = [
             'firstName' => $firstName,
             'email' => $email
         ];
@@ -40,6 +40,11 @@ class Authenticator
         $error = $user ? 'Incorrect Password' : 'No Account Found';
 
         return $error;
+    }
+
+    function logout()
+    {
+        Session::expire();
     }
 }
 

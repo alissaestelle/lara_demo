@@ -1,45 +1,43 @@
 <?php
 
 use App\Authenticator;
+use App\Session;
 use Http\Forms\Login;
 
 extract($_POST);
 
-// Validate User Input:
+// Validate User Login Form:
 $form = new Login();
 $validation = $form->validate($email, $password);
 
-// Validation Fails → Return to Login Page:
-if (!$validation) {
-    $viewData = [
-        'email' => $email,
-        'password' => $password,
-        'errors' => $form->getErrors()
-    ];
+// If User Input Valid → Authenticate the User:
+if ($validation) {
+    $auth = new Authenticator();
+    $status = $auth->attempt($email, $password);
 
-    return viewPath('sessions/create.view.php', $viewData);
+    // Check for Auth Errors
+        // Error Found → (Error = True)
+        // Error Not Found → (Error = False)
+    $error = $status ?: false;
 
-    // https://medium.com/@albertcolom/how-to-use-arrow-function-in-php-c28490ff7fb7
+    // User Authentication
+        // Error === True ? Generate Error
+        // Error === False ? Redirect to User Dashboard
+    $error ? $form->setError($status) : redirect('/');
 }
 
-// Validation Passes → Authenticate User:
-$auth = new Authenticator();
-$status = $auth->attempt($email, $password);
+Session::print('ERRS', $form->getErrors());
 
-// If Error Found → Generate Error:
-$error = $status ?: false;
 
-// Authentication Fails ? Return Error : Redirect to User Dashboard
-$error ? $form->setError($status) : redirect('/');
-
-// $_SESSION['_log']['errors'] = $form->getErrors();
+// If User Input Invalid → Return to Login Page:
 
 $viewData = [
     'email' => $email,
     'password' => $password,
-    'errors' => $form->getErrors()
+    'errors' => Session::get('ERRS') ?? []
 ];
 
-viewPath('sessions/create.view.php', $viewData);
+redirect('/login', $viewData);
+// viewPath('sessions/create.view.php', $viewData);
 
 ?>

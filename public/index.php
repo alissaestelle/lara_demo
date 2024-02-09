@@ -1,6 +1,7 @@
 <?php
 
 use App\Router;
+use App\Session;
 
 const BASE_PATH = __DIR__ . '/../';
 // ↳ BASE_PATH = /Users/alissa/Desktop/KML/lara_sandbox/demo/
@@ -46,4 +47,6 @@ $router = new Router();
 $routes = include basePath('routes.php');
 
 $router->route($thisURI, $methType);
+
+Session::erase();
 ?>

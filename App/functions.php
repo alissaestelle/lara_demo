@@ -19,20 +19,10 @@ function formatArr($arr)
     }
 }
 
-function redirect($path) {
+function redirect($path, $data = []) {
+    extract($data);
     header("location: {$path}");
     exit();
-}
-
-function logout()
-{
-    $_SESSION = [];
-
-    $params = session_get_cookie_params();
-    extract($params);
-    session_destroy();
-
-    setcookie('PHPSESSID', '', time() - 3600, $path, $domain);
 }
 
 function eHandler($code = 404)
