@@ -14,19 +14,20 @@ class Session
         $_SESSION[$key] = $value;
     }
 
-    static function get($key)
+    static function get($key, $k = NULL)
     {
-        return $_SESSION['_MSGS'][$key] ?? $_SESSION[$key] ?? [];
+        return $_SESSION[$key][$k] ?? ($_SESSION[$key] ?? []);
     }
 
     static function print($key, $value)
     {
-        return $_SESSION['_MSGS'][$key] = $value;
+        return $_SESSION[$key] = $value;
     }
 
     static function erase()
     {
         unset($_SESSION['_MSGS']);
+        unset($_SESSION['OLD']);
     }
 
     static function reset()
@@ -37,7 +38,7 @@ class Session
     static function expire()
     {
         static::reset();
-        
+
         $params = session_get_cookie_params();
         extract($params);
         session_destroy();

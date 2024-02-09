@@ -11,12 +11,17 @@ class Authenticator
     {
         extract($x);
 
-        $_SESSION['_USER'] = [
-            'firstName' => $firstName,
-            'email' => $email
+        $_SESSION['USER'] = [
+            'FNAME' => $firstName,
+            'EMAIL' => $email
         ];
 
         session_regenerate_id(true);
+    }
+
+    function logout()
+    {
+        Session::expire();
     }
 
     function attempt($x, $y)
@@ -42,9 +47,34 @@ class Authenticator
         return $error;
     }
 
-    function logout()
+    function register($data)
     {
-        Session::expire();
+        $db = Agent::resolve(Database::class);
+        extract($data);
+
+        $getUser = 'SELECT * FROM users WHERE email = :email';
+        $newUser =
+            'INSERT INTO users (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)';
+
+        $user = $db->query($getUser, [':email' => $x])->find();
+        // Returns False if No Record is Found
+
+        if (!$user) {
+            $config = [
+                ':firstName' => $firstName,
+                ':lastName' => $lastName,
+                ':email' => $email,
+                ':password' => password_hash($password, PASSWORD_BCRYPT)
+            ];
+
+            $db->query($newUser, $config);
+
+            $this->login(['firstName' => $firstName, ':email' => $email]);
+        }
+
+        return $this->attempt($email, $password);
+
+        
     }
 }
 

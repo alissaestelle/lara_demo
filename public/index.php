@@ -27,7 +27,7 @@ function viewPath($path, $attr = [])
 include basePath('App/functions.php');
 // ↳ Output: /Users/alissa/Desktop/KML/lara_sandbox/demo/functions.php
 
-$_SESSION ?? formatArr($_SESSION);
+// $_SESSION ?? formatArr($_SESSION);
 
 // Autoload w/o Namespaces
 // spl_autoload_register(fn($class) => include basePath("App/{$class}.php"));

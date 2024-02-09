@@ -65,7 +65,8 @@
                                      alt="Alissa Wiley" />
                             </button>
                             <form method="POST"
-                                  action="/logout">
+                                  action="/logout"
+                                  class="mb-0">
                                 <input type="hidden"
                                        name="_METHOD"
                                        value="DELETE" />

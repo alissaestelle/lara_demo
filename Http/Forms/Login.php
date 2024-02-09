@@ -1,9 +1,7 @@
 <?php
 
 namespace Http\Forms;
-
 use App\Validator;
-
 
 class Login
 {

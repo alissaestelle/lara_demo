@@ -11,6 +11,9 @@ function formatArr($arr)
 {
     // $newArr = var_dump($arr);
     // return $newArr;
+    if ($arr === null) {
+        return;
+    }
 
     foreach ($arr as $a) {
         echo '<pre>';
@@ -19,10 +22,16 @@ function formatArr($arr)
     }
 }
 
-function redirect($path, $data = []) {
+function redirect($path, $data = [])
+{
     extract($data);
     header("location: {$path}");
     exit();
+}
+
+function old($key)
+{
+    return App\Session::get('OLD', $key) ?? false;
 }
 
 function eHandler($code = 404)

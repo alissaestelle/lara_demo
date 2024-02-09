@@ -26,15 +26,14 @@ if ($validation) {
     $error ? $form->setError($status) : redirect('/');
 }
 
-Session::print('ERRS', $form->getErrors());
-
+Session::print('_MSGS', ['ERRS' => $form->getErrors()]);
+Session::print('OLD', ['EMAIL' => $email]);
 
 // If User Input Invalid → Return to Login Page:
 
 $viewData = [
-    'email' => $email,
-    'password' => $password,
-    'errors' => Session::get('ERRS') ?? []
+    'email' => Session::get('OLD', 'EMAIL') ?? false,
+    'errors' => Session::get('_MSGS', 'ERRS') ?? []
 ];
 
 redirect('/login', $viewData);
