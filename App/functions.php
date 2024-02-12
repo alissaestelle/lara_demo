@@ -22,16 +22,20 @@ function formatArr($arr)
     }
 }
 
-function redirect($path, $data = [])
+function redirect($path)
 {
-    extract($data);
     header("location: {$path}");
     exit();
 }
 
+function check($key)
+{
+    return App\Session::get($key) ?: false;
+}
+
 function old($key)
 {
-    return App\Session::get('OLD', $key) ?? false;
+    return App\Session::get('OLD', $key) ?: false;
 }
 
 function eHandler($code = 404)

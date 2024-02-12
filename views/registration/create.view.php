@@ -26,7 +26,8 @@
                         <input id="firstName"
                                name="firstName"
                                autocomplete="firstName"
-                               value="<?= $_SESSION['OLD']['FNAME'] ?? false ?>"
+                               required
+                               value="<?= old('FNAME') ?>"
                                placeholder="First Name"
                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
@@ -38,7 +39,8 @@
                         <input id="lastName"
                                name="lastName"
                                autocomplete="lastName"
-                               value="<?= $_SESSION['OLD']['LNAME'] ?? false ?>"
+                               required
+                               value="<?= old('LNAME') ?>"
                                placeholder="Last Name"
                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
@@ -56,7 +58,7 @@
                         <input id="email"
                                name="email"
                                autocomplete="email"
-                               value="<?= $_SESSION['OLD']['EMAIL'] ?? false ?>"
+                               value="<?= old('EMAIL') ?>"
                                placeholder="Email Address"
                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         <p class="<?= toggleColor() ?> mt-2"><?= filterErr($errors, 'email') ?></p>

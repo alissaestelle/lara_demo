@@ -16,27 +16,22 @@ if ($validation) {
     $status = $auth->attempt($email, $password);
 
     // Check for Auth Errors
-        // Error Found → (Error = True)
-        // Error Not Found → (Error = False)
-    $error = $status ?: false;
+        // Errors Found → (Errors = True)
+        // Errors Not Found → (Errors = False)
+    $errors = $status ?: false;
 
     // User Authentication
-        // Error === True ? Generate Error
-        // Error === False ? Redirect to User Dashboard
-    $error ? $form->setError($status) : redirect('/');
+        // Errors === True ? Generate Errors
+        // Errors === False ? Redirect to User Dashboard
+    $errors ? $form->setError($status) : redirect('/');
 }
 
+// If User Input Invalid
+    // 1. Save User Input & Errors to Session
 Session::print('_MSGS', ['ERRS' => $form->getErrors()]);
 Session::print('OLD', ['EMAIL' => $email]);
 
-// If User Input Invalid → Return to Login Page:
-
-$viewData = [
-    'email' => Session::get('OLD', 'EMAIL') ?? false,
-    'errors' => Session::get('_MSGS', 'ERRS') ?? []
-];
-
-redirect('/login', $viewData);
-// viewPath('sessions/create.view.php', $viewData);
+    // 2. Return to Login Page
+redirect('/login');
 
 ?>

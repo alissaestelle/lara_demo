@@ -4,6 +4,7 @@ namespace App;
 
 use App\Agent;
 use App\Database;
+use App\Session;
 
 class Authenticator
 {
@@ -11,10 +12,10 @@ class Authenticator
     {
         extract($x);
 
-        $_SESSION['USER'] = [
+        Session::print('USER', [
             'FNAME' => $firstName,
             'EMAIL' => $email
-        ];
+        ]);
 
         session_regenerate_id(true);
     }
@@ -56,7 +57,7 @@ class Authenticator
         $newUser =
             'INSERT INTO users (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)';
 
-        $user = $db->query($getUser, [':email' => $x])->find();
+        $user = $db->query($getUser, [':email' => $email])->find();
         // Returns False if No Record is Found
 
         if (!$user) {
@@ -68,13 +69,13 @@ class Authenticator
             ];
 
             $db->query($newUser, $config);
-
-            $this->login(['firstName' => $firstName, ':email' => $email]);
+            
+            $user = ['firstName' => $firstName, 'email' => $email];
+            $this->login($user);
+            return true;
         }
-
-        return $this->attempt($email, $password);
-
         
+        return false;
     }
 }
 

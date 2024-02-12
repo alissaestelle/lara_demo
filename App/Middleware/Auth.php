@@ -1,17 +1,15 @@
 <?php
 
 namespace App\Middleware;
+use App\Session;
 
 class Auth
 {
     function handle()
     {
-        $sessData = count($_SESSION);
-        if ($sessData > 0) extract($_SESSION);
-        $user ??= false;
+        $user = Session::get('USER');
 
         if (!$user) {
-            var_dump($user);
             header('location: /register');
             exit();
         }
@@ -19,7 +17,6 @@ class Auth
         return;
     }
 }
-
 ?>
 
 <!-- NOTES -->

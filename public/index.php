@@ -12,7 +12,6 @@ $methType = $_POST['_METHOD'] ?? $_SERVER['REQUEST_METHOD'];
 
 session_start();
 
-
 function basePath($path)
 {
     return BASE_PATH . $path;
@@ -48,5 +47,5 @@ $routes = include basePath('routes.php');
 
 $router->route($thisURI, $methType);
 
-Session::erase();
+if ($thisURI === '/register' || $thisURI === '/login') Session::erase();
 ?>

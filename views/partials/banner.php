@@ -1,17 +1,10 @@
 <?php
-use App\Database;
-use App\Agent;
 
-$db = Agent::resolve(Database::class);
-if ($user) extract($user);
+use App\Session;
 
-$email = [':email' => $email ?? false];
-
-$thisUser = $db->query("SELECT * FROM users WHERE email = :email", $email)->find();
-
-$thisUser && extract($thisUser);
-$firstName ??= false;
+$firstName = Session::get('USER', 'FNAME') ?: false;
 $name = $firstName ?: 'Guest';
+
 ?>
 
 <header class="bg-white shadow">

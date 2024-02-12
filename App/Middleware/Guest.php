@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Middleware;
+use App\Session;
 
 class Guest
 {
     function handle()
     {
-        $sessData = count($_SESSION);
-        if ($sessData > 0) extract($_SESSION);
-        $user ??= false;
+        $user = Session::get('USER');
         
         if ($user) {
             header('location: /notes');

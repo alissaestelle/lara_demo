@@ -51,7 +51,7 @@
                     <!-- Profile Dropdown -->
                     <div class="relative ml-3">
                         <div class="flex items-center space-x-2">
-                            <?php if ($user ?? false): ?>
+                            <?php if (check('USER')): ?>
                             <button type="button"
                                     class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                     id="user-menu-button"
