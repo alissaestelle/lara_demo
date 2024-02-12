@@ -2,12 +2,12 @@
 
 use App\Authenticator;
 use App\Session;
-use Http\Forms\Login;
+use Http\Forms\Account;
 
 extract($_POST);
 
 // Validate User Login Form:
-$form = new Login();
+$form = new Account();
 $validation = $form->validate($email, $password);
 
 // If User Input Valid → Authenticate the User:

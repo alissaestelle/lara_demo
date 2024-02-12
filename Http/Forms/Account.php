@@ -3,7 +3,7 @@
 namespace Http\Forms;
 use App\Validator;
 
-class Login
+class Account
 {
     protected $errors = [];
     
