@@ -1,5 +1,6 @@
 <?php
 
+use App\FormException;
 use App\Router;
 use App\Session;
 
@@ -45,7 +46,14 @@ include basePath('bootstrap.php');
 $router = new Router();
 $routes = include basePath('routes.php');
 
-$router->route($thisURI, $methType);
+try {
+    $router->route($thisURI, $methType);
+} catch (FormException $e) {
+    Session::print('_MSGS', ['ERRS' => $e->errors]);
+    Session::print('OLD', ['EMAIL' => $e->data]);
+    
+    redirect($_SERVER['HTTP_REFERER']);
+}
 
 if ($thisURI === '/register' || $thisURI === '/login') Session::erase();
 ?>

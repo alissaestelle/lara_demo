@@ -1,37 +1,23 @@
 <?php
 
 use App\Authenticator;
-use App\Session;
 use Http\Forms\Account;
 
 extract($_POST);
 
 // Validate User Login Form:
-$form = new Account();
-$validation = $form->validate($email, $password);
+$form = Account::validate(['email' => $email, 'password' => $password]);
 
 // If User Input Valid → Authenticate the User:
-if ($validation) {
-    $auth = new Authenticator();
-    $status = $auth->attempt($email, $password);
+$auth = (new Authenticator)->attempt($email, $password);
 
-    // Check for Auth Errors
-        // Errors Found → (Errors = True)
-        // Errors Not Found → (Errors = False)
-    $errors = $status ?: false;
+// Check for Auth Errors
+$errors = $auth ?: false;
 
-    // User Authentication
-        // Errors === True ? Generate Errors
-        // Errors === False ? Redirect to User Dashboard
-    $errors ? $form->setError($status) : redirect('/');
-}
+// User Auth Fails ? Generate Error : Redirect to User Dashboard
+$errors ? $form->setError($auth)->throw() : redirect('/notes');
 
-// If User Input Invalid
-    // 1. Save User Input & Errors to Session
-Session::print('_MSGS', ['ERRS' => $form->getErrors()]);
-Session::print('OLD', ['EMAIL' => $email]);
-
-    // 2. Return to Login Page
-redirect('/login');
+// 2. Return to Login Page
+// redirect('/login');
 
 ?>

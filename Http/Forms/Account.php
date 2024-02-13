@@ -1,29 +1,55 @@
 <?php
 
 namespace Http\Forms;
+use App\FormException;
 use App\Validator;
 
 class Account
 {
     protected $errors = [];
-    
-    function validate($x, $y)
+
+    function __construct(public array $attributes)
     {
-        $email = Validator::verifyAcct($x);
-        if ($email) $this->errors[] = compact('email');
+        extract($attributes);
 
-        $password = Validator::verifyCreds($y);
-        if ($password) $this->errors[] = compact('password');
+        $email = Validator::verifyAcct($email);
 
-        return empty($this->errors);
+        if ($email) {
+            $this->errors[] = compact('email');
+        }
+
+        $password = Validator::verifyCreds($password);
+
+        if ($password) {
+            $this->errors[] = compact('password');
+        }
     }
 
-    function setError($auth) {
+    function setError($auth)
+    {
         $this->errors[] = compact('auth');
+        return $this;
     }
 
-    function getErrors() {
+    function getErrors()
+    {
         return $this->errors;
+    }
+
+    function failure()
+    {
+        return (bool) count($this->errors);
+    }
+
+    function throw()
+    {
+        FormException::throw($this->getErrors(), $this->attributes);
+    }
+
+    static function validate($attributes)
+    {
+        $instance = new static($attributes);
+        return $instance->failure() ? $instance->throw() : $instance;
     }
 }
 
