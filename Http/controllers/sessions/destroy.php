@@ -4,7 +4,7 @@ use App\User;
 
 (new User)->logout();
 
-header('location: /');
+header('location: /login');
 exit();
 
 ?>

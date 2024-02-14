@@ -3,8 +3,6 @@
 use App\User;
 use Http\Forms\Entry;
 
-extract($_POST);
-
 // Validate User Registration Form:
 $form = Entry::validate($_POST);
 

@@ -1,24 +1,26 @@
 <?php
 
-use App\Database;
 use App\Agent;
+use App\Database;
+use App\Session;
 use App\Validator;
 
 $db = Agent::resolve(Database::class);
+$thisUser = Session::get('USER', '_ID');
 
 $reqType = $_SERVER['REQUEST_METHOD'];
 $postStmt =
     'INSERT INTO notes (title, body, userID) VALUES (:title, :body, :userID)';
 
-if ($_POST) extract($_POST);
+extract($_POST);
 if ($_SESSION) extract($_SESSION);
 
-function createNote($t, $b, $x, $y)
+function createNote($t, $b, $u, $x, $y)
 {
     $config = [
         ':title' => $t,
         ':body' => $b,
-        ':userID' => 1
+        ':userID' => $u
     ];
 
     $x->query($y, $config);
@@ -30,10 +32,10 @@ function createNote($t, $b, $x, $y)
 
 $alert =
     Validator::checkNote($body, 1, 1000) ?:
-    createNote($title, $body, $db, $postStmt);
+    createNote($title, $body, $thisUser, $db, $postStmt);
 
 $viewData = [
-    'user' => $user ??= false,
+    'user' => $user ?? false,
     'page' => 'New Note',
     'title' => $title,
     'body' => $body,

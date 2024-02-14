@@ -1,11 +1,13 @@
 <?php
 
-use App\Database;
 use App\Agent;
+use App\Database;
+use App\Session;
 
 $db = Agent::resolve(Database::class);
+$user = Session::get('USER', '_ID');
 
-$notes = $db->query('SELECT * FROM notes WHERE userID = 1')->findAll();
+$notes = $db->query("SELECT * FROM notes WHERE userID = {$user}")->findAll();
 
 $viewData = [
     'page' => 'My Notes',

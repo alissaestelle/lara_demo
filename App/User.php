@@ -13,6 +13,7 @@ class User
         extract($x);
 
         Session::print('USER', [
+            '_ID' => $id,
             'FNAME' => $firstName,
             'EMAIL' => $email
         ]);
@@ -31,7 +32,7 @@ class User
 
         $getUser = 'SELECT * FROM users WHERE email = :email';
         $user = $db->query($getUser, [':email' => $x])->find();
-        // Returns False if No Record is Found
+        // ↳ Returns False if No Record is Found
 
         $user && extract($user);
         $hashPass = $password ?? false;

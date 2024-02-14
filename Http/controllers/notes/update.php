@@ -1,17 +1,17 @@
 <?php
 
-use App\Database;
 use App\Agent;
+use App\Database;
+use App\Session;
 use App\Validator;
 
 $db = Agent::resolve(Database::class);
 
-$thisUser = 1;
+$thisUser = Session::get('USER', '_ID');
 $getStmt = 'SELECT * FROM notes WHERE id = :id';
 $putStmt = 'UPDATE notes SET title = :title, body = :body WHERE id = :id';
 
 if ($_POST) extract($_POST);
-if ($_SESSION) extract($_SESSION);
 
 $noteID = $id;
 $pTitle = $title;
@@ -46,7 +46,7 @@ $alert =
     checkPass($noteID, $pTitle, $pBody, $db, $putStmt);
 
 $viewData = [
-    'user' => $user ??= false,
+    'user' => $user ?? false,
     'page' => 'Edit Note',
     'noteID' => $noteID,
     'title' => $pTitle,

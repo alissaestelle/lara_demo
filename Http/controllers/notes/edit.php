@@ -1,25 +1,22 @@
 <?php
 
-use App\Database;
 use App\Agent;
+use App\Database;
+use App\Session;
 
 $db = Agent::resolve(Database::class);
 
-$thisUser = 1;
+$thisUser = Session::get('USER', '_ID');
 $noteID = [':id' => $_GET['id']];
 $getNote = 'SELECT * FROM notes WHERE id = :id';
-
-if ($_SESSION) extract($_SESSION);
 
 // 1. Validate Results
 $n = $db->query($getNote, $noteID)->find();
 extract($n);
 
-$page = $title ?? 'My Note';
-
 $viewData = [
     'user' => $user ??= false,
-    'page' => $page,
+    'page' => 'Edit Note',
     'noteID' => $id,
     'title' => $title,
     'body' => $body,

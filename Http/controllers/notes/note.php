@@ -1,18 +1,17 @@
 <?php
 
-use App\Database;
 use App\Agent;
+use App\Database;
+use App\Session;
 
 $db = Agent::resolve(Database::class);
-
-if ($_SESSION) extract($_SESSION);
 
 // $userConfig = ['user' => 1, 'id' => $_GET['id']];
 // $statement = 'SELECT * FROM notes WHERE userID = :user AND id = :id';
 
-$thisUser = 1;
+$thisUser = Session::get('USER', '_ID');
 $noteID = [':id' => $_GET['id']];
-$getStmt = 'SELECT * FROM notes WHERE id = :id';;
+$getStmt = 'SELECT * FROM notes WHERE id = :id';
 
 // 1. Validate Results
 $n = $db->query($getStmt, $noteID)->find();

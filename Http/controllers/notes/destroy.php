@@ -2,8 +2,9 @@
 
 // use App\Validator;
 
-use App\Database;
 use App\Agent;
+use App\Database;
+use App\Session;
 
 $db = Agent::resolve(Database::class);
 
@@ -13,7 +14,7 @@ $db = Agent::resolve(Database::class);
 // $userConfig = ['user' => 1, 'id' => $_GET['id']];
 // $statement = 'SELECT * FROM notes WHERE userID = :user AND id = :id';
 
-$thisUser = 1;
+$thisUser = Session::get('USER', '_ID');
 $noteID = [':id' => $_POST['id']];
 $getStmt = 'SELECT * FROM notes WHERE id = :id';
 $delStmt = 'DELETE FROM notes WHERE id = :id';
