@@ -4,19 +4,35 @@ namespace App;
 
 class FormException extends \Exception
 {
-    public readonly array $errors;
-    public readonly string $data;
+    // public readonly array $errors;
+    // public readonly string $data;
     
-    // protected $errors = [];
-    // protected $form = [];
+    protected $attributes = [];
+    protected $errors = [];
 
-    static function throw($errs, $data)
+
+    function setAttr($a) {
+        $this->attributes = $a;
+    }
+
+    function getAttr() {
+        return $this->attributes;
+    }
+
+    function setErrors($e) {
+        $this->errors = $e;
+    }
+
+    function getErrors() {
+        return $this->errors;
+    }
+
+    static function throw($errs, $attr)
     {
-        extract($data);
         $instance = new static();
 
-        $instance->errors = $errs;
-        $instance->data = $email;
+        $instance->setErrors($errs);
+        $instance->setAttr($attr);
 
         throw $instance;
     }

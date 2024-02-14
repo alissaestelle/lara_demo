@@ -49,11 +49,22 @@ $routes = include basePath('routes.php');
 try {
     $router->route($thisURI, $methType);
 } catch (FormException $e) {
-    Session::print('_MSGS', ['ERRS' => $e->errors]);
-    Session::print('OLD', ['EMAIL' => $e->data]);
-    
+    extract($e->getAttr());
+
+    Session::print('_MSGS', ['ERRS' => $e->getErrors()]);
+
+    $thisURI === '/register'
+        ? Session::print('OLD', [
+            'FNAME' => $firstName,
+            'LNAME' => $lastName,
+            'EMAIL' => $email
+        ])
+        : Session::print('OLD', ['EMAIL' => $email]);
+
     redirect($_SERVER['HTTP_REFERER']);
 }
 
-if ($thisURI === '/register' || $thisURI === '/login') Session::erase();
+if ($thisURI === '/register' || $thisURI === '/login') {
+    Session::erase();
+}
 ?>

@@ -11,7 +11,7 @@
             <img class="mx-auto h-10 w-auto"
                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                  alt="Your Company">
-            <h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create New Account
+            <h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create New Entry
             </h2>
         </div>
 
@@ -27,7 +27,7 @@
                                name="firstName"
                                autocomplete="firstName"
                                required
-                               value="<?= old('FNAME') ?>"
+                               value="<?= old('FNAME') ?? '' ?>"
                                placeholder="First Name"
                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
@@ -40,7 +40,7 @@
                                name="lastName"
                                autocomplete="lastName"
                                required
-                               value="<?= old('LNAME') ?>"
+                               value="<?= old('LNAME') ?? '' ?>"
                                placeholder="Last Name"
                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>

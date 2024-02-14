@@ -4,7 +4,7 @@ namespace Http\Forms;
 use App\FormException;
 use App\Validator;
 
-class Account
+class Entry
 {
     protected $errors = [];
 
@@ -46,10 +46,12 @@ class Account
         FormException::throw($this->getErrors(), $this->attributes);
     }
 
-    static function validate($attributes)
+    static function validate($attr)
     {
-        $instance = new static($attributes);
-        return $instance->failure() ? $instance->throw() : $instance;
+        $_this = new static($attr);
+        return $_this->failure() ? $_this->throw() : $_this;
+
+        // Note: $this isn't available for use inside static functions, but a specific class instance can still be manually simulated using the new static() fn.
     }
 }
 

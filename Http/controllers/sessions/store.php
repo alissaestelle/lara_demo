@@ -1,15 +1,15 @@
 <?php
 
-use App\Authenticator;
-use Http\Forms\Account;
+use App\User;
+use Http\Forms\Entry;
 
 extract($_POST);
 
 // Validate User Login Form:
-$form = Account::validate(['email' => $email, 'password' => $password]);
+$form = Entry::validate(['email' => $email, 'password' => $password]);
 
 // If User Input Valid → Authenticate the User:
-$auth = (new Authenticator)->attempt($email, $password);
+$auth = (new User)->attempt($email, $password);
 
 // Check for Auth Errors
 $errors = $auth ?: false;

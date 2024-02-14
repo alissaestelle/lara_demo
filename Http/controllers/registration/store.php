@@ -1,53 +1,16 @@
 <?php
 
-use App\Agent;
-use App\Authenticator;
-use App\Database;
-use App\Session;
-use App\Validator;
+use App\User;
+use Http\Forms\Entry;
 
-$db = Agent::resolve(Database::class);
+extract($_POST);
 
-if ($_POST) {
-    extract($_POST);
-}
+// Validate User Registration Form:
+$form = Entry::validate($_POST);
 
-// Validate Form Input
-function formData($arr, $x, $y)
-{
-    $email = Validator::verifyAcct($x);
-    if ($email) {
-        $arr[] = compact('email');
-    }
+// If User Input Valid → Create a New User:
+$auth = (new User)->register($_POST);
 
-    $password = Validator::verifyCreds($y);
-    if ($password) {
-        $arr[] = compact('password');
-    }
-
-    return $arr;
-}
-
-$errors = formData([], $email, $password);
-
-// Valid User Input ? Authenticate User
-if (!$errors) {
-    $auth = new Authenticator();
-    $success = $auth->register($_POST);
-
-    if ($success) redirect('/');
-}
-
-// Invalid User Input
-    // 1. Store Errors & User Data
-Session::print('_MSGS', ['ERRS' => $errors]);
-Session::print('OLD', [
-    'FNAME' => $firstName,
-    'LNAME' => $lastName,
-    'EMAIL' => $email
-]);
-
-    // 2. Return to Register Page
-redirect('/register');
+$auth ? redirect('/notes') : redirect('/register');
 
 ?>

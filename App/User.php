@@ -6,7 +6,7 @@ use App\Agent;
 use App\Database;
 use App\Session;
 
-class Authenticator
+class User
 {
     function login($x)
     {

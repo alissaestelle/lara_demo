@@ -1,8 +1,8 @@
 <?php 
 
-use App\Authenticator;
+use App\User;
 
-(new Authenticator)->logout();
+(new User)->logout();
 
 header('location: /');
 exit();
