@@ -48,10 +48,10 @@ class User
         return $error;
     }
 
-    function register($data)
+    function register($form)
     {
         $db = Agent::resolve(Database::class);
-        extract($data);
+        extract($form);
 
         $getUser = 'SELECT * FROM users WHERE email = :email';
         $newUser =
@@ -69,12 +69,12 @@ class User
             ];
 
             $db->query($newUser, $config);
-            
+
             $user = ['firstName' => $firstName, 'email' => $email];
             $this->login($user);
             return true;
         }
-        
+
         return false;
     }
 }

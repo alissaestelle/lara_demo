@@ -9,8 +9,9 @@ extract($_POST);
 $form = Entry::validate($_POST);
 
 // If User Input Valid → Create a New User:
-$auth = (new User)->register($_POST);
+$auth = (new User())->register($_POST);
 
-$auth ? redirect('/notes') : redirect('/register');
+// New User Success ? Redirect to Dashboard : Return to Register Pg
+$auth ? redirect('/notes') : $form->setError('Account Already Exists')->throw();
 
 ?>

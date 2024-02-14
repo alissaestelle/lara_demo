@@ -11,7 +11,7 @@
             <img class="mx-auto h-10 w-auto"
                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                  alt="Your Company">
-            <h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create New Entry
+            <h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create New Account
             </h2>
         </div>
 
@@ -93,7 +93,7 @@
                 <div>
                     <button type="submit"
                             class="flex w-full justify-center rounded-md bg-indigo-600 mt-10 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
-                    <p class="<?= toggleColor() ?> mt-2"><?= filterErr($errors, 'auth') ?>
+                    <p class="<?= toggleColor() ?> mt-4 text-center"><?= filterErr($errors, 'auth') ?>
                 </div>
             </form>
         </div>

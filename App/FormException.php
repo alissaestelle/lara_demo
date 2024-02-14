@@ -4,26 +4,26 @@ namespace App;
 
 class FormException extends \Exception
 {
-    // public readonly array $errors;
-    // public readonly string $data;
-    
     protected $attributes = [];
     protected $errors = [];
 
-
-    function setAttr($a) {
+    function setAttr($a)
+    {
         $this->attributes = $a;
     }
 
-    function getAttr() {
+    function getAttr()
+    {
         return $this->attributes;
     }
 
-    function setErrors($e) {
+    function setErrors($e)
+    {
         $this->errors = $e;
     }
 
-    function getErrors() {
+    function getErrors()
+    {
         return $this->errors;
     }
 
