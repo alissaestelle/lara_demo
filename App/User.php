@@ -13,7 +13,7 @@ class User
         extract($x);
 
         Session::print('USER', [
-            '_ID' => $id,
+            '_ID' => $uID,
             'FNAME' => $firstName,
             'EMAIL' => $email
         ]);
@@ -70,8 +70,11 @@ class User
             ];
 
             $db->query($newUser, $config);
+            $record = $db->query($getUser, [':email' => $email])->find();
 
-            $user = ['firstName' => $firstName, 'email' => $email];
+            extract($record);
+
+            $user = ['uID' => $id, 'firstName' => $firstName, 'email' => $email];
             $this->login($user);
             return true;
         }

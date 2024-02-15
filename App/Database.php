@@ -30,7 +30,7 @@ class Database
 
     function query($req, $params = [])
     {
-        $this->query = $this->connection->prepare($req);
+        $this->query = $this->connection->prepare($req);      
         $this->query->execute($params);
 
         // return $query->fetchAll(PDO::FETCH_ASSOC);
