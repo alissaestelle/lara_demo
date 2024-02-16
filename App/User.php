@@ -13,7 +13,7 @@ class User
         extract($x);
 
         Session::print('USER', [
-            '_ID' => $uID,
+            '_ID' => $id,
             'FNAME' => $firstName,
             'EMAIL' => $email
         ]);
@@ -32,6 +32,7 @@ class User
 
         $getUser = 'SELECT * FROM users WHERE email = :email';
         $user = $db->query($getUser, [':email' => $x])->find();
+
         // ↳ Returns False if No Record is Found
 
         $user && extract($user);
@@ -72,10 +73,7 @@ class User
             $db->query($newUser, $config);
             $record = $db->query($getUser, [':email' => $email])->find();
 
-            extract($record);
-
-            $user = ['uID' => $id, 'firstName' => $firstName, 'email' => $email];
-            $this->login($user);
+            $this->login($record);
             return true;
         }
 
