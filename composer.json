@@ -1,0 +1,27 @@
+{
+    "name": "alissaestelle/demo",
+    "description": "A Note Tracking App w/ Register x Login Capability",
+    "authors": [
+        {
+            "name": "Alissa Wiley",
+            "email": "alissa.estelle.w@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/collections": "^10.45"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/",
+            "Http\\": "Http/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.34"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
