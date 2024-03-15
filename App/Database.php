@@ -41,14 +41,12 @@ class Database
     function find()
     {
         $results = $this->query->fetch();
-        // return $results ?: eHandler(404);
         return $results;
     }
 
     function findAll()
     {
         $results = $this->query->fetchAll();
-        // return $results ?: eHandler(404);
         return $results;
     }
 }
